@@ -36,23 +36,23 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Hello <span class="keyword">from</span> <span class="string">'@/components/Hello.vue'</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="何时使用public文件夹"><a href="#何时使用public文件夹" class="headerlink" title="何时使用public文件夹"></a>何时使用<code>public</code>文件夹</h3><p>通过webpack的处理并获得如下好处：</p>
-<ol>
+<ul>
 <li><p>脚本和样式表会被压缩并且打包在一起，从而避免额外的网络请求</p>
 </li>
 <li><p>文件丢失会直接在编译时报错，而不是到了用户端才会产生404错误</p>
 </li>
 <li><p>最终生成的文件名包含了内容哈希，因此不用担心浏览器缓存他们的老版本</p>
 </li>
-</ol>
+</ul>
 <p>以下的几种情况可以考虑使用public文件夹</p>
-<ol>
+<ul>
 <li><p>你需要在构建输出中指定一个固定的文件名字</p>
 </li>
 <li><p>你有上千个图片，需要动态引用他们的路径</p>
 </li>
 <li><p>有些库可能会和webpack不兼容，除了将其用一个独立的<code>&lt;script&gt;</code>标签引入没有别的办法</p>
 </li>
-</ol>
+</ul>
 <h3 id="使用public文件夹的注意事项"><a href="#使用public文件夹的注意事项" class="headerlink" title="使用public文件夹的注意事项"></a>使用public文件夹的注意事项</h3><p>如果你的应用没有部署在域名的根部，那么你需要为你的URL配置<code>publicPath</code>前缀</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vue.config.js</span></span><br><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">    publicPath: precess.env.NODE_ENV === <span class="string">'production'</span>?<span class="string">'线上所在目录'</span>:<span class="string">'本地所在目录 正常为 / '</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
