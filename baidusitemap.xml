@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93Vuex/</loc>
+    <lastmod>2020-07-12</lastmod>
+  </url>  <url>
+    <loc>https://qytayh.github.io/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/</loc>
+    <lastmod>2020-07-12</lastmod>
+  </url>  <url>
     <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</loc>
     <lastmod>2020-07-12</lastmod>
   </url>  <url>
@@ -32,9 +38,6 @@
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
     <loc>https://qytayh.github.io/2020/06/Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB/</loc>
-    <lastmod>2020-07-11</lastmod>
-  </url>  <url>
-    <loc>https://qytayh.github.io/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
     <loc>https://qytayh.github.io/2020/06/%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AAVue%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6/</loc>
