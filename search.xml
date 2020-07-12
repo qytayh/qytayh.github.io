@@ -826,7 +826,7 @@
     <title>实现vue弹窗组件(一)</title>
     <url>/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</url>
     <content><![CDATA[<p>本文讲述如何使用<code>render()</code>，构造一个弹窗组件</p>
-<p><a href="https://qytayh.github.io/2020/07/01/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/">点击这里查看</a>,使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
+<p><a href="https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/">点击这里查看</a>,使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
 <a id="more"></a>
 
 <p>弹窗这类组件的特点是他们<strong>在当前vue实例之外独立存在</strong>，通常挂载于body；他们是通过JS动态创建的，不需要在任何组件中声明。常见的使用姿势：</p>
@@ -855,7 +855,7 @@
     <title>实现vue弹窗组件(二)</title>
     <url>/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/</url>
     <content><![CDATA[<p>本文讲述如何使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
-<p><a href="https://qytayh.github.io/2020/07/01/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/">点击这里查看</a>，查看如何使用<code>render()</code>,构造一个弹窗组件</p>
+<p><a href="https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/">点击这里查看</a>，查看如何使用<code>render()</code>,构造一个弹窗组件</p>
 <a id="more"></a>
 
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在<code>components</code>文件夹下新建<code>Tools</code>文件夹用于存放所有的全局组件，<code>Tools</code>文件夹下新增<code>Notice</code>文件夹，并在其中新建<code>Notice.vue</code>和<code>Notice.js</code></p>

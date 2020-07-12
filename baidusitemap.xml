@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</loc>
+    <lastmod>2020-07-12</lastmod>
+  </url>  <url>
+    <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/</loc>
+    <lastmod>2020-07-12</lastmod>
+  </url>  <url>
     <loc>https://qytayh.github.io/2020/05/Vue%E4%B8%ADWatch%E5%92%8CComputed%E7%9A%84%E5%B7%AE%E5%BC%82/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
@@ -49,13 +55,7 @@
     <loc>https://qytayh.github.io/2020/07/Vue%E7%BB%84%E4%BB%B6data%E4%B8%BA%E4%BD%95%E8%A6%81%E5%87%BD%E6%95%B0%E5%BD%A2%E5%BC%8F/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
-    <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</loc>
-    <lastmod>2020-07-11</lastmod>
-  </url>  <url>
     <loc>https://qytayh.github.io/2020/07/vue-router%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0/</loc>
-    <lastmod>2020-07-11</lastmod>
-  </url>  <url>
-    <loc>https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
     <loc>https://qytayh.github.io/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/</loc>
