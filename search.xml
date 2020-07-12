@@ -756,7 +756,7 @@
       </tags>
   </entry>
   <entry>
-    <title>实现Vuex</title>
+    <title>实现一个简易Vuex</title>
     <url>/2020/07/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93Vuex/</url>
     <content><![CDATA[<p>在阅读本篇之前，希望你已经对vuex的用法有了一定了解。可以参考一下<a href="https://qytayh.github.io/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/">Vue统一状态管理——Vuex</a>。</p>
 <a id="more"></a>
