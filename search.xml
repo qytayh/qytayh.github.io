@@ -1008,4 +1008,45 @@
         <tag>闲谈</tag>
       </tags>
   </entry>
+  <entry>
+    <title>前端面试题(一)</title>
+    <url>/2020/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80)/</url>
+    <content><![CDATA[<p>整理了一些之前面试遇到的题</p>
+<a id="more"></a>
+
+
+<ol>
+<li><p><code>NAN === NAN</code> 是否成立，为什么？</p>
+<p> 不成立。因为JavaScript规定，NaN表示的是非数字，但是这个非数字也是不同的，因此 NaN 不等于 NaN，两个NaN永远不可能相等。</p>
+</li>
+<li><p><code>0.1+0.2 == 0.3</code>和 <code>0.1+0.2 === 0.3</code> 哪个成立，为什么？</p>
+<p> 都不成立.在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2！==0.3，这是为什么呢？在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。</p>
+<blockquote>
+<p>可以通过 <code>(0.1 + 0.2).toFixed(2) // &quot;0.30&quot;</code> 和 <code>parseFloat((0.1 + 0.2).toFixed(2)) //0.3</code> 的方法使<code>0.1+0.2==0.3</code></p>
+</blockquote>
+</li>
+<li><p>什么是闭包？</p>
+<p> <strong>如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包。</strong></p>
+<p> 举一个简单的例子</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;<span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>箭头函数与普通函数的区别？</p>
+</li>
+<li><p>原型链</p>
+</li>
+<li><p>promise和callback的区别</p>
+</li>
+<li><p>em rem 是什么？</p>
+</li>
+<li><p>Vue为什么使用虚拟dom？</p>
+</li>
+</ol>
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
 </search>
