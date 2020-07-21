@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue中Watch和Computed的差异</title>
-    <url>/2020/05/Vue%E4%B8%ADWatch%E5%92%8CComputed%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
-    <content><![CDATA[<p>计算属性 vs 监听器</p>
-<a id="more"></a>
-
-<h1 id="语境上的差异"><a href="#语境上的差异" class="headerlink" title="语境上的差异"></a>语境上的差异</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个值变化了，我要做些事情，适合一个值影响多个值的情形</span></span><br><span class="line">watch:&#123;</span><br><span class="line">    firstname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;,</span><br><span class="line">    lastname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个值由其他值得来，这些值变化了我也要变，适合多个值影响一个值的情形</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    fullname()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="计算属性有缓存性"><a href="#计算属性有缓存性" class="headerlink" title="计算属性有缓存性"></a>计算属性有缓存性</h1><p>计算所得的值如果没有变化不会重复执行</p>
-<h1 id="监听器选项"><a href="#监听器选项" class="headerlink" title="监听器选项"></a>监听器选项</h1><p>监听器选项提供了更通用的方法，适合执行异步操作或者较大开销操作的情况</p>
-<p><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">点击查看范例</a></p>
-<p>我们可以在范例中看到，在created的时候将我们要发送的请求做了一次防抖处理的封装，输入停止500毫秒后才会触发，这样就可以很有效的控制请求的频率</p>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git常用命令</title>
     <url>/2020/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>日常工作中的git高频命令</p>
@@ -81,6 +61,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue中Watch和Computed的差异</title>
+    <url>/2020/05/Vue%E4%B8%ADWatch%E5%92%8CComputed%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
+    <content><![CDATA[<p>计算属性 vs 监听器</p>
+<a id="more"></a>
+
+<h1 id="语境上的差异"><a href="#语境上的差异" class="headerlink" title="语境上的差异"></a>语境上的差异</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个值变化了，我要做些事情，适合一个值影响多个值的情形</span></span><br><span class="line">watch:&#123;</span><br><span class="line">    firstname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;,</span><br><span class="line">    lastname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个值由其他值得来，这些值变化了我也要变，适合多个值影响一个值的情形</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    fullname()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="计算属性有缓存性"><a href="#计算属性有缓存性" class="headerlink" title="计算属性有缓存性"></a>计算属性有缓存性</h1><p>计算所得的值如果没有变化不会重复执行</p>
+<h1 id="监听器选项"><a href="#监听器选项" class="headerlink" title="监听器选项"></a>监听器选项</h1><p>监听器选项提供了更通用的方法，适合执行异步操作或者较大开销操作的情况</p>
+<p><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">点击查看范例</a></p>
+<p>我们可以在范例中看到，在created的时候将我们要发送的请求做了一次防抖处理的封装，输入停止500毫秒后才会触发，这样就可以很有效的控制请求的频率</p>
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo简单使用说明</title>
     <url>/2020/05/hexo%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<h1 id="一些使用hexo常用的命令"><a href="#一些使用hexo常用的命令" class="headerlink" title="一些使用hexo常用的命令"></a>一些使用hexo常用的命令</h1><a id="more"></a>
@@ -121,6 +121,39 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在vue中使用graphql</title>
+    <url>/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/</url>
+    <content><![CDATA[<p>记录在vue中使用graphql踩过的坑</p>
+<a id="more"></a>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>首先我们保证已经有了一个vue项目，输入以下命令</p>
+<p><code>npm install --save vue-apollo graphql apollo-client apollo-link apollo-link-http apollo-cache-inmemory graphql-tag</code></p>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>创建apollo.js并输入以下代码</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createHttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span></span><br><span class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span></span><br><span class="line"><span class="keyword">import</span> &#123;ApolloLink&#125; <span class="keyword">from</span> <span class="string">'apollo-link'</span></span><br><span class="line"><span class="comment">// 与 API 的 HTTP 连接</span></span><br><span class="line"><span class="keyword">const</span> httpLink = createHttpLink(&#123;</span><br><span class="line">  <span class="comment">// 你需要在这里使用绝对路径</span></span><br><span class="line">  uri: process.env.VUE_APP_BASEURL + <span class="string">'graphql'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> middlewareLink = <span class="keyword">new</span> ApolloLink(<span class="function">(<span class="params">operation, forward</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">//配置token验证</span></span><br><span class="line">  <span class="keyword">let</span> api_token = <span class="built_in">JSON</span>.parse(sessionStorage.getItem(<span class="string">'api_token'</span>)!)</span><br><span class="line">  <span class="keyword">if</span> (api_token) &#123;</span><br><span class="line">      token = api_token</span><br><span class="line">  &#125;</span><br><span class="line">  operation.setContext(&#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">          Authorization: <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span> || <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> forward(operation)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 缓存实现</span></span><br><span class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache()</span><br><span class="line"><span class="comment">// 创建 apollo 客户端</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> apolloClient = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  link: middlewareLink.concat(httpLink),</span><br><span class="line">  cache,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后在main.js中引入</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apollo <span class="keyword">from</span> <span class="string">'./plugins/apollo'</span></span><br><span class="line"><span class="keyword">import</span> VueApollo <span class="keyword">from</span> <span class="string">'vue-apollo'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueApollo)</span><br><span class="line"><span class="keyword">const</span> apolloProvider = <span class="keyword">new</span> VueApollo(&#123;</span><br><span class="line">  defaultClient: apollo.apolloClient,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>使用 apolloProvider 选项将它添加到你的应用程序</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  vuetify,</span><br><span class="line">  i18n,</span><br><span class="line">  store,</span><br><span class="line">  apolloProvider,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在我们需要使用graphql的页面引入<code>gql</code></p>
+<p><code>import gql from &#39;graphql-tag&#39;</code></p>
+<p>然后创建一个js文件<code>query.js</code>用来编写查询语句，并在我们使用graphql的页面引入</p>
+<p><code>import * as sql from &#39;./query&#39;</code></p>
+<p>在<code>query.js</code>中添加查询代码如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> report1 = gql <span class="string">`query($id: ID!)&#123;</span></span><br><span class="line"><span class="string">     contracts(first:10,id:$id)&#123;</span></span><br><span class="line"><span class="string">        data&#123;</span></span><br><span class="line"><span class="string">            id</span></span><br><span class="line"><span class="string">            address</span></span><br><span class="line"><span class="string">            contract_no</span></span><br><span class="line"><span class="string">            order&#123;</span></span><br><span class="line"><span class="string">                contract_id</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br></pre></td></tr></table></figure>
+
+<p>然后回到我们需要使用apollo的页面，使用如下方法进行查询</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$apollo.query(&#123;</span><br><span class="line">          query: sql.report1,</span><br><span class="line">          variables: &#123;</span><br><span class="line">            id: <span class="number">195</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          fetchPolicy:<span class="string">"no-cache"</span>,<span class="comment">//禁止缓存</span></span><br><span class="line">      &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">      &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/1.png" class="" title="[如图，我们便得到了查询结果]">
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>graphql</tag>
       </tags>
   </entry>
   <entry>
@@ -226,39 +259,6 @@
       </tags>
   </entry>
   <entry>
-    <title>在vue中使用graphql</title>
-    <url>/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/</url>
-    <content><![CDATA[<p>记录在vue中使用graphql踩过的坑</p>
-<a id="more"></a>
-<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>首先我们保证已经有了一个vue项目，输入以下命令</p>
-<p><code>npm install --save vue-apollo graphql apollo-client apollo-link apollo-link-http apollo-cache-inmemory graphql-tag</code></p>
-<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>创建apollo.js并输入以下代码</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createHttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span></span><br><span class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span></span><br><span class="line"><span class="keyword">import</span> &#123;ApolloLink&#125; <span class="keyword">from</span> <span class="string">'apollo-link'</span></span><br><span class="line"><span class="comment">// 与 API 的 HTTP 连接</span></span><br><span class="line"><span class="keyword">const</span> httpLink = createHttpLink(&#123;</span><br><span class="line">  <span class="comment">// 你需要在这里使用绝对路径</span></span><br><span class="line">  uri: process.env.VUE_APP_BASEURL + <span class="string">'graphql'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> middlewareLink = <span class="keyword">new</span> ApolloLink(<span class="function">(<span class="params">operation, forward</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">//配置token验证</span></span><br><span class="line">  <span class="keyword">let</span> api_token = <span class="built_in">JSON</span>.parse(sessionStorage.getItem(<span class="string">'api_token'</span>)!)</span><br><span class="line">  <span class="keyword">if</span> (api_token) &#123;</span><br><span class="line">      token = api_token</span><br><span class="line">  &#125;</span><br><span class="line">  operation.setContext(&#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">          Authorization: <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span> || <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> forward(operation)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 缓存实现</span></span><br><span class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache()</span><br><span class="line"><span class="comment">// 创建 apollo 客户端</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> apolloClient = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  link: middlewareLink.concat(httpLink),</span><br><span class="line">  cache,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>然后在main.js中引入</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apollo <span class="keyword">from</span> <span class="string">'./plugins/apollo'</span></span><br><span class="line"><span class="keyword">import</span> VueApollo <span class="keyword">from</span> <span class="string">'vue-apollo'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueApollo)</span><br><span class="line"><span class="keyword">const</span> apolloProvider = <span class="keyword">new</span> VueApollo(&#123;</span><br><span class="line">  defaultClient: apollo.apolloClient,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>使用 apolloProvider 选项将它添加到你的应用程序</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  vuetify,</span><br><span class="line">  i18n,</span><br><span class="line">  store,</span><br><span class="line">  apolloProvider,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在我们需要使用graphql的页面引入<code>gql</code></p>
-<p><code>import gql from &#39;graphql-tag&#39;</code></p>
-<p>然后创建一个js文件<code>query.js</code>用来编写查询语句，并在我们使用graphql的页面引入</p>
-<p><code>import * as sql from &#39;./query&#39;</code></p>
-<p>在<code>query.js</code>中添加查询代码如下</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> report1 = gql <span class="string">`query($id: ID!)&#123;</span></span><br><span class="line"><span class="string">     contracts(first:10,id:$id)&#123;</span></span><br><span class="line"><span class="string">        data&#123;</span></span><br><span class="line"><span class="string">            id</span></span><br><span class="line"><span class="string">            address</span></span><br><span class="line"><span class="string">            contract_no</span></span><br><span class="line"><span class="string">            order&#123;</span></span><br><span class="line"><span class="string">                contract_id</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br></pre></td></tr></table></figure>
-
-<p>然后回到我们需要使用apollo的页面，使用如下方法进行查询</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$apollo.query(&#123;</span><br><span class="line">          query: sql.report1,</span><br><span class="line">          variables: &#123;</span><br><span class="line">            id: <span class="number">195</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          fetchPolicy:<span class="string">"no-cache"</span>,<span class="comment">//禁止缓存</span></span><br><span class="line">      &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">      &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<img src="/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/1.png" class="" title="[如图，我们便得到了查询结果]">
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>graphql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>爬取豆瓣电影top250</title>
     <url>/2020/05/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/</url>
     <content><![CDATA[<p>记录使用python爬取豆瓣</p>
@@ -276,6 +276,43 @@
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue中v-if和v-for的优先级</title>
+    <url>/2020/07/Vue%E4%B8%ADv-if%E5%92%8Cv-for%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/</url>
+    <content><![CDATA[<p>v-if和v-for哪个优先级更高？如果两个同时出现，应该怎么优化才能得到更好的性能？</p>
+<a id="more"></a>
+
+<p>当v-if和v-for同级的时候，我们写一个例子</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"child in children"</span> <span class="attr">v-if</span>=<span class="string">"isFolder"</span>&gt;</span>&#123;&#123;child.title&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> app=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">            el:<span class="string">"#demo"</span>,</span></span><br><span class="line">            data()&#123;</span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> &#123;</span></span><br><span class="line">                    children:[</span><br><span class="line"><span class="actionscript">                        &#123;title:<span class="string">'foo'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">                        &#123;title:<span class="string">'bar'</span>&#125;</span></span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            computed:&#123;</span><br><span class="line">                isFolder()&#123;</span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> <span class="keyword">this</span>.children&amp;&amp;<span class="keyword">this</span>.children.length&gt;<span class="number">0</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(app.$options.render)</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>生成的渲染函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ƒ anonymous(</span><br><span class="line">) &#123;</span><br><span class="line"><span class="keyword">with</span>(<span class="keyword">this</span>)&#123;<span class="keyword">return</span> _c(<span class="string">'div'</span>,&#123;<span class="attr">attrs</span>:&#123;<span class="string">"id"</span>:<span class="string">"demo"</span>&#125;&#125;,_l((children),<span class="function"><span class="keyword">function</span>(<span class="params">child</span>)</span>&#123;<span class="keyword">return</span> (isFolder)?_c(<span class="string">'p'</span>,[_v(_s(child.title))]):_e()&#125;),<span class="number">0</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样我们可以看出来是循环先执行，isFolder判断后执行</p>
+</blockquote>
+<p>当v-if和v-for不同级的时候，我们先调整下dom区域</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">'isFolder'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"child in children"</span>&gt;</span>&#123;&#123;child.title&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>两者不同级时，渲染函数入下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ƒ anonymous(</span><br><span class="line">) &#123;</span><br><span class="line"><span class="keyword">with</span>(<span class="keyword">this</span>)&#123;<span class="keyword">return</span> _c(<span class="string">'div'</span>,&#123;<span class="attr">attrs</span>:&#123;<span class="string">"id"</span>:<span class="string">"demo"</span>&#125;&#125;,[(isFolder)?_l((children),<span class="function"><span class="keyword">function</span>(<span class="params">child</span>)</span>&#123;<span class="keyword">return</span> _c(<span class="string">'p'</span>,[_v(_s(child.title))])&#125;):_e()],<span class="number">2</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先判断了isFolder再看是否执行-l</p>
+</blockquote>
+<p><strong>结论</strong></p>
+<ol>
+<li>显然v-for优先于v-if被解析</li>
+<li>如果同时出现，每次渲染都会先执行循环再判断条件，无论如何，循环都不可避免，浪费了性能</li>
+<li>要避免出现这种情况，可以在外层嵌套template,然后在这一层进行v-if判断，然后在内部进行v-for循环</li>
+<li>如果条件出现在循环内部，可通过计算属性提前过滤掉那些不需要显示的项</li>
+</ol>
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+        <category>前端面试</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>前端面试</tag>
       </tags>
   </entry>
   <entry>
@@ -326,43 +363,6 @@
 <blockquote>
 <p>2.2.0+ 的版本里，当在组件中使用v-for时，key现在是必须的，key的取值需要是number或者string，而且需要在同级唯一。</p>
 </blockquote>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-        <category>前端面试</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>前端面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue中v-if和v-for的优先级</title>
-    <url>/2020/07/Vue%E4%B8%ADv-if%E5%92%8Cv-for%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/</url>
-    <content><![CDATA[<p>v-if和v-for哪个优先级更高？如果两个同时出现，应该怎么优化才能得到更好的性能？</p>
-<a id="more"></a>
-
-<p>当v-if和v-for同级的时候，我们写一个例子</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"child in children"</span> <span class="attr">v-if</span>=<span class="string">"isFolder"</span>&gt;</span>&#123;&#123;child.title&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> app=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">            el:<span class="string">"#demo"</span>,</span></span><br><span class="line">            data()&#123;</span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> &#123;</span></span><br><span class="line">                    children:[</span><br><span class="line"><span class="actionscript">                        &#123;title:<span class="string">'foo'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">                        &#123;title:<span class="string">'bar'</span>&#125;</span></span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            computed:&#123;</span><br><span class="line">                isFolder()&#123;</span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> <span class="keyword">this</span>.children&amp;&amp;<span class="keyword">this</span>.children.length&gt;<span class="number">0</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(app.$options.render)</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>生成的渲染函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ƒ anonymous(</span><br><span class="line">) &#123;</span><br><span class="line"><span class="keyword">with</span>(<span class="keyword">this</span>)&#123;<span class="keyword">return</span> _c(<span class="string">'div'</span>,&#123;<span class="attr">attrs</span>:&#123;<span class="string">"id"</span>:<span class="string">"demo"</span>&#125;&#125;,_l((children),<span class="function"><span class="keyword">function</span>(<span class="params">child</span>)</span>&#123;<span class="keyword">return</span> (isFolder)?_c(<span class="string">'p'</span>,[_v(_s(child.title))]):_e()&#125;),<span class="number">0</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样我们可以看出来是循环先执行，isFolder判断后执行</p>
-</blockquote>
-<p>当v-if和v-for不同级的时候，我们先调整下dom区域</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">'isFolder'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"child in children"</span>&gt;</span>&#123;&#123;child.title&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>两者不同级时，渲染函数入下</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ƒ anonymous(</span><br><span class="line">) &#123;</span><br><span class="line"><span class="keyword">with</span>(<span class="keyword">this</span>)&#123;<span class="keyword">return</span> _c(<span class="string">'div'</span>,&#123;<span class="attr">attrs</span>:&#123;<span class="string">"id"</span>:<span class="string">"demo"</span>&#125;&#125;,[(isFolder)?_l((children),<span class="function"><span class="keyword">function</span>(<span class="params">child</span>)</span>&#123;<span class="keyword">return</span> _c(<span class="string">'p'</span>,[_v(_s(child.title))])&#125;):_e()],<span class="number">2</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>先判断了isFolder再看是否执行-l</p>
-</blockquote>
-<p><strong>结论</strong></p>
-<ol>
-<li>显然v-for优先于v-if被解析</li>
-<li>如果同时出现，每次渲染都会先执行循环再判断条件，无论如何，循环都不可避免，浪费了性能</li>
-<li>要避免出现这种情况，可以在外层嵌套template,然后在这一层进行v-if判断，然后在内部进行v-for循环</li>
-<li>如果条件出现在循环内部，可通过计算属性提前过滤掉那些不需要显示的项</li>
-</ol>
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>vue</category>
@@ -490,7 +490,7 @@
 <p>举一个简单的例子</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Joker = <span class="string">"帅"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Joker</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()();<span class="comment">//输出：'帅'</span></span><br><span class="line"><span class="comment">//当然我们也可以这样，等同于fun()()</span></span><br><span class="line"><span class="keyword">var</span> temfun = fun();</span><br><span class="line"><span class="built_in">console</span>.log(temfun())</span><br></pre></td></tr></table></figure>
 
-<p> <strong>闭包的使用场景</strong></p>
+<p><strong>闭包的使用场景</strong></p>
 <p>封装局部变量</p>
 <p>例如：一个游戏，主人公有10条命，我们如果把<code>var live=10</code>写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。</p>
 <p>但如果写在局部作用域，会有如下问题：</p>
@@ -554,6 +554,35 @@
       </categories>
       <tags>
         <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实现vue弹窗组件(一)</title>
+    <url>/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</url>
+    <content><![CDATA[<p>本文讲述如何使用<code>render()</code>，构造一个弹窗组件</p>
+<p><a href="https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/">点击这里查看</a>,使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
+<a id="more"></a>
+
+<p>弹窗这类组件的特点是他们<strong>在当前vue实例之外独立存在</strong>，通常挂载于body；他们是通过JS动态创建的，不需要在任何组件中声明。常见的使用姿势：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$create(Notice, &#123;</span><br><span class="line">    title: <span class="string">"标题"</span>,</span><br><span class="line">    message: <span class="string">"提示信息"</span>,</span><br><span class="line">    duration: <span class="number">2000</span><span class="comment">//延时时间</span></span><br><span class="line">&#125;).show();</span><br></pre></td></tr></table></figure>
+
+<h2 id="create函数"><a href="#create函数" class="headerlink" title="create函数"></a>create函数</h2><p>创建utils/create.js,并添加以下代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params">Component,props</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 组件构造函数如何获取？</span></span><br><span class="line">    <span class="comment">// 1.Vue.extend()</span></span><br><span class="line">    <span class="comment">// 2.render</span></span><br><span class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">        <span class="comment">// h是createElement, 返回VNode，是虚拟dom</span></span><br><span class="line">        <span class="comment">// 需要挂载才能变成真实dom</span></span><br><span class="line">        render: <span class="function"><span class="params">h</span> =&gt;</span> h(Component, &#123;props&#125;),</span><br><span class="line">    &#125;).$mount() <span class="comment">// 不指定宿主元素，则会创建真实dom，但是不会追加操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取真实dom————vm.$el,并挂载到body上</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(vm.$el)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> comp = vm.$children[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">// 删除</span></span><br><span class="line">    comp.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(vm.$el)</span><br><span class="line">        vm.$destroy()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> comp</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> create</span><br></pre></td></tr></table></figure>
+
+<h2 id="弹窗组件"><a href="#弹窗组件" class="headerlink" title="弹窗组件"></a>弹窗组件</h2><p>新建弹窗组件，<code>Notice.vue</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;box&quot; v-if&#x3D;&quot;isShow&quot;&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;title&#125;&#125;&lt;&#x2F;h3&gt;</span><br><span class="line">    &lt;p class&#x3D;&quot;box-content&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      default: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    message: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      default: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    duration: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 1000</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShow: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">      this.isShow &#x3D; true;</span><br><span class="line">      setTimeout(this.hide, this.duration);</span><br><span class="line">    &#125;,</span><br><span class="line">    hide() &#123;</span><br><span class="line">      this.isShow &#x3D; false;</span><br><span class="line">      &#x2F;&#x2F; 清除自己</span><br><span class="line">      this.remove();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  width: 100%;</span><br><span class="line">  top: 16px;</span><br><span class="line">  left: 0;</span><br><span class="line">  text-align: center;</span><br><span class="line">  pointer-events: none;</span><br><span class="line">  background-color: #fff;</span><br><span class="line">  border: grey 3px solid;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">&#125;</span><br><span class="line">.box-content &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  margin: 10px auto;</span><br><span class="line">  font-size: 14px;  </span><br><span class="line">  padding: 8px 16px;</span><br><span class="line">  background: #fff;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">  margin-bottom: 8px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用弹窗组件"><a href="#使用弹窗组件" class="headerlink" title="使用弹窗组件"></a>使用弹窗组件</h2><p>在需要使用该组件的vue文件中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Notice <span class="keyword">from</span> <span class="string">"@/components/Notice.vue"</span>;</span><br><span class="line"><span class="keyword">import</span> create <span class="keyword">from</span> <span class="string">'./utils/create'</span></span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">    showNotice() &#123;</span><br><span class="line">        create(Notice, &#123;</span><br><span class="line">            title: <span class="string">"标题"</span>,</span><br><span class="line">            message: <span class="string">"提示信息"</span>,</span><br><span class="line">            duration: <span class="number">2000</span><span class="comment">//延时时间</span></span><br><span class="line">        &#125;).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -717,35 +746,6 @@
       </tags>
   </entry>
   <entry>
-    <title>实现vue弹窗组件(一)</title>
-    <url>/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%B8%80)/</url>
-    <content><![CDATA[<p>本文讲述如何使用<code>render()</code>，构造一个弹窗组件</p>
-<p><a href="https://qytayh.github.io/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/">点击这里查看</a>,使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
-<a id="more"></a>
-
-<p>弹窗这类组件的特点是他们<strong>在当前vue实例之外独立存在</strong>，通常挂载于body；他们是通过JS动态创建的，不需要在任何组件中声明。常见的使用姿势：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$create(Notice, &#123;</span><br><span class="line">    title: <span class="string">"标题"</span>,</span><br><span class="line">    message: <span class="string">"提示信息"</span>,</span><br><span class="line">    duration: <span class="number">2000</span><span class="comment">//延时时间</span></span><br><span class="line">&#125;).show();</span><br></pre></td></tr></table></figure>
-
-<h2 id="create函数"><a href="#create函数" class="headerlink" title="create函数"></a>create函数</h2><p>创建utils/create.js,并添加以下代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params">Component,props</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 组件构造函数如何获取？</span></span><br><span class="line">    <span class="comment">// 1.Vue.extend()</span></span><br><span class="line">    <span class="comment">// 2.render</span></span><br><span class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">        <span class="comment">// h是createElement, 返回VNode，是虚拟dom</span></span><br><span class="line">        <span class="comment">// 需要挂载才能变成真实dom</span></span><br><span class="line">        render: <span class="function"><span class="params">h</span> =&gt;</span> h(Component, &#123;props&#125;),</span><br><span class="line">    &#125;).$mount() <span class="comment">// 不指定宿主元素，则会创建真实dom，但是不会追加操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取真实dom————vm.$el,并挂载到body上</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(vm.$el)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> comp = vm.$children[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">// 删除</span></span><br><span class="line">    comp.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(vm.$el)</span><br><span class="line">        vm.$destroy()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> comp</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> create</span><br></pre></td></tr></table></figure>
-
-<h2 id="弹窗组件"><a href="#弹窗组件" class="headerlink" title="弹窗组件"></a>弹窗组件</h2><p>新建弹窗组件，<code>Notice.vue</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;box&quot; v-if&#x3D;&quot;isShow&quot;&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;title&#125;&#125;&lt;&#x2F;h3&gt;</span><br><span class="line">    &lt;p class&#x3D;&quot;box-content&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      default: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    message: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      default: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    duration: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 1000</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShow: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">      this.isShow &#x3D; true;</span><br><span class="line">      setTimeout(this.hide, this.duration);</span><br><span class="line">    &#125;,</span><br><span class="line">    hide() &#123;</span><br><span class="line">      this.isShow &#x3D; false;</span><br><span class="line">      &#x2F;&#x2F; 清除自己</span><br><span class="line">      this.remove();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  width: 100%;</span><br><span class="line">  top: 16px;</span><br><span class="line">  left: 0;</span><br><span class="line">  text-align: center;</span><br><span class="line">  pointer-events: none;</span><br><span class="line">  background-color: #fff;</span><br><span class="line">  border: grey 3px solid;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">&#125;</span><br><span class="line">.box-content &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  margin: 10px auto;</span><br><span class="line">  font-size: 14px;  </span><br><span class="line">  padding: 8px 16px;</span><br><span class="line">  background: #fff;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">  margin-bottom: 8px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用弹窗组件"><a href="#使用弹窗组件" class="headerlink" title="使用弹窗组件"></a>使用弹窗组件</h2><p>在需要使用该组件的vue文件中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Notice <span class="keyword">from</span> <span class="string">"@/components/Notice.vue"</span>;</span><br><span class="line"><span class="keyword">import</span> create <span class="keyword">from</span> <span class="string">'./utils/create'</span></span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">    showNotice() &#123;</span><br><span class="line">        create(Notice, &#123;</span><br><span class="line">            title: <span class="string">"标题"</span>,</span><br><span class="line">            message: <span class="string">"提示信息"</span>,</span><br><span class="line">            duration: <span class="number">2000</span><span class="comment">//延时时间</span></span><br><span class="line">        &#125;).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>实现vue弹窗组件(二)</title>
     <url>/2020/07/%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6(%E4%BA%8C)/</url>
     <content><![CDATA[<p>本文讲述如何使用<code>Vue.extend()</code>构造弹窗组件，并实现全局调用</p>
@@ -772,6 +772,58 @@
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>苹果手机自定义siri回答</title>
+    <url>/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/</url>
+    <content><![CDATA[<p>前几天抖音上看到一个在苹果店让siri叫老公的视频，相信不少小伙伴看完都偷偷对自己的siri试过吧。而且肯定也有不少小伙伴没有试出视频中的效果，这个是怎么做到的呢？看完这篇你就明白了。</p>
+<a id="more"></a>
+
+<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>首先我们肯定要有一步苹果手机，然后打开<strong>快捷指令</strong></p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/1.jpg" class="" title="[第一步]">
+
+<h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><p>点击创建快捷指令</p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/2.jpg" class="" title="[第二步]">
+
+<h1 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h1><p>添加操作，并搜索<strong>显示提醒</strong>，选中最下方的<strong>显示提醒</strong></p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/3.jpg" class="" title="[第三步]">
+
+<h1 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h1><p>修改图中<strong>信息</strong>部分为你希望siri回应的内容，然后点击下一步</p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/4.jpg" class="" title="[设置回复内容]">
+
+<p>例如我可以设置成这样</p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/5.jpg" class="" title="[肯定是我最帅了]">
+
+<blockquote>
+<p>记得将下方的显示取消按钮设置成图中状态</p>
+</blockquote>
+<h1 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h1><p>设置触发我们设置好的回复内容的关键词语，然后点击完成</p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/6.jpg" class="" title="[第五步]">
+
+<p>例如我设置的<strong>谁是世界上最帅的男人</strong></p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/7.jpg" class="" title="[别问，问就是我最帅]">
+
+<h1 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h1><p>接下来我们就可以和siri一起愉快的玩耍啦<del>~</del></p>
+<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/8.jpg" class="" title="[我帅吧]">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>闲谈</category>
+      </categories>
+      <tags>
+        <tag>闲谈</tag>
       </tags>
   </entry>
   <entry>
@@ -846,58 +898,6 @@
       </categories>
       <tags>
         <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>苹果手机自定义siri回答</title>
-    <url>/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/</url>
-    <content><![CDATA[<p>前几天抖音上看到一个在苹果店让siri叫老公的视频，相信不少小伙伴看完都偷偷对自己的siri试过吧。而且肯定也有不少小伙伴没有试出视频中的效果，这个是怎么做到的呢？看完这篇你就明白了。</p>
-<a id="more"></a>
-
-<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>首先我们肯定要有一步苹果手机，然后打开<strong>快捷指令</strong></p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/1.jpg" class="" title="[第一步]">
-
-<h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><p>点击创建快捷指令</p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/2.jpg" class="" title="[第二步]">
-
-<h1 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h1><p>添加操作，并搜索<strong>显示提醒</strong>，选中最下方的<strong>显示提醒</strong></p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/3.jpg" class="" title="[第三步]">
-
-<h1 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h1><p>修改图中<strong>信息</strong>部分为你希望siri回应的内容，然后点击下一步</p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/4.jpg" class="" title="[设置回复内容]">
-
-<p>例如我可以设置成这样</p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/5.jpg" class="" title="[肯定是我最帅了]">
-
-<blockquote>
-<p>记得将下方的显示取消按钮设置成图中状态</p>
-</blockquote>
-<h1 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h1><p>设置触发我们设置好的回复内容的关键词语，然后点击完成</p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/6.jpg" class="" title="[第五步]">
-
-<p>例如我设置的<strong>谁是世界上最帅的男人</strong></p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/7.jpg" class="" title="[别问，问就是我最帅]">
-
-<h1 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h1><p>接下来我们就可以和siri一起愉快的玩耍啦<del>~</del></p>
-<img src="/2020/07/%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E8%87%AA%E5%AE%9A%E4%B9%89siri%E5%9B%9E%E7%AD%94/8.jpg" class="" title="[我帅吧]">
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>闲谈</category>
-      </categories>
-      <tags>
-        <tag>闲谈</tag>
       </tags>
   </entry>
   <entry>
@@ -997,6 +997,76 @@
       </tags>
   </entry>
   <entry>
+    <title>必备知识之Vue-Cli</title>
+    <url>/2020/06/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B9%8BVue-Cli/</url>
+    <content><![CDATA[<p>更快速构建vue项目</p>
+<a id="more"></a>
+
+<h1 id="快速原型开发"><a href="#快速原型开发" class="headerlink" title="快速原型开发"></a>快速原型开发</h1><p>你可以使用<code>vue serve</code>和<code>vue build</code>命令对单个vue文件快速进行原型开发</p>
+<h2 id="安装-vue-cli-service-global扩展"><a href="#安装-vue-cli-service-global扩展" class="headerlink" title="安装@vue/cli-service-global扩展"></a>安装<code>@vue/cli-service-global</code>扩展</h2><p><code>npm install  -g @vue/cli-service-global</code></p>
+<p>准备一个内容原型</p>
+<h2 id="vue-serve"><a href="#vue-serve" class="headerlink" title="vue serve"></a>vue serve</h2><p>启动一个服务并运行原型</p>
+<p><code>vue serve Hello.vue</code></p>
+<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><h2 id="vue-create"><a href="#vue-create" class="headerlink" title="vue create"></a>vue create</h2><p>创建一个vue项目</p>
+<p><code>vue create projectname</code></p>
+<h2 id="vue-ui"><a href="#vue-ui" class="headerlink" title="vue ui"></a>vue ui</h2><p>图形化项目管理</p>
+<p><code>vue ui</code></p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>Vue Cli使用了一套基于插件的架构。插件可以修改webpack的内部配置，也可以向vue-cli-serve注入命令。在项目创建的过程中，绝大部分列出的特性都是通过插件来实现的</p>
+<h2 id="在现有的项目中安装插件"><a href="#在现有的项目中安装插件" class="headerlink" title="在现有的项目中安装插件"></a>在现有的项目中安装插件</h2><p>如果你想在一个已经被创建好的项目中安装一个插件，可以使用 <code>vue add</code> 命令</p>
+<p><code>vue add router</code></p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><h2 id="处理资源路径"><a href="#处理资源路径" class="headerlink" title="处理资源路径"></a>处理资源路径</h2><p>当你在JavaScript、css或vue文件中使用相对路径(必须以<code>.</code>开头)引用一个静态资源时，该资源将被webpack处理。(public中文件webpack不会处理)</p>
+<h3 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h3><p>如果URL是一个绝对路径(例如<code>/images/foo.png</code>),他将会保留不变。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"/assets/logo.png"</span>&gt;</span>//当前服务器静态路径下 public会作为服务器静态路径</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"http://image.xx.com/logo.png"</span>&gt;</span>//某图片服务器线上地址</span><br></pre></td></tr></table></figure>
+
+<p>如果URL以<code>.</code>开头会作为一个相对模块请求被解释并基于文件系统相对路径</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果URL以<code>~</code>开头会作为一个模块请求被解析，这意味着你甚至可以引用Node模块中的资源</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"~some-npm-package/foo.png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果URL以<code>@</code>开头会作为一个模块请求被解析，Vue Cli默认会设置一个指向<code>src</code>的别名<code>@</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Hello <span class="keyword">from</span> <span class="string">'@/components/Hello.vue'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="何时使用public文件夹"><a href="#何时使用public文件夹" class="headerlink" title="何时使用public文件夹"></a>何时使用<code>public</code>文件夹</h3><p>通过webpack的处理并获得如下好处：</p>
+<ul>
+<li><p>脚本和样式表会被压缩并且打包在一起，从而避免额外的网络请求</p>
+</li>
+<li><p>文件丢失会直接在编译时报错，而不是到了用户端才会产生404错误</p>
+</li>
+<li><p>最终生成的文件名包含了内容哈希，因此不用担心浏览器缓存他们的老版本</p>
+</li>
+</ul>
+<p>以下的几种情况可以考虑使用public文件夹</p>
+<ul>
+<li><p>你需要在构建输出中指定一个固定的文件名字</p>
+</li>
+<li><p>你有上千个图片，需要动态引用他们的路径</p>
+</li>
+<li><p>有些库可能会和webpack不兼容，除了将其用一个独立的<code>&lt;script&gt;</code>标签引入没有别的办法</p>
+</li>
+</ul>
+<h3 id="使用public文件夹的注意事项"><a href="#使用public文件夹的注意事项" class="headerlink" title="使用public文件夹的注意事项"></a>使用public文件夹的注意事项</h3><p>如果你的应用没有部署在域名的根部，那么你需要为你的URL配置<code>publicPath</code>前缀</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vue.config.js</span></span><br><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">    publicPath: precess.env.NODE_ENV === <span class="string">'production'</span>?<span class="string">'线上所在目录'</span>:<span class="string">'本地所在目录 正常为 / '</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>public/index.html</code> 等通过<code>html-webpack-plugin</code>用作模板的HTML文件中，你需要用过<code>&lt;% =BASE_URL %&gt;</code> 设置链接前缀：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">href</span>=<span class="string">"&lt;% =BASE_URL %&gt;favicon.ico"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在模板中，先向组件传入BASE_URL：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        publicPath: process.env.BASE_URL</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在使用的时候</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;img :src=<span class="string">"`$&#123;publicPath&#125;my-image.png`"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue统一状态管理——Vuex</title>
     <url>/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/</url>
     <content><![CDATA[<p>Vuex是一个专为Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状<br>态，并以相应的规则保证状态以可预测的方式发生变化。</p>
@@ -1075,112 +1145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>在vue项目中动态加载js</title>
-    <url>/2020/06/%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDjs/</url>
-    <content><![CDATA[<p>通常情况下，如果网页加载的js文件较多并且文件较大的时候，一次性加载完毕的话，会非常的影响网页加载的速度，当然将会严重影响用户体验，最终会影响的站点的人气，所以我们要想办法解决这个问题。</p>
-<a id="more"></a>
-
-<p>很多时候，加载的js代码在当前页面功能中并不需要，所以如果能够根据需要动态的加载js文件，那么将会极大的提高网页的加载速度，下面就通过代码实例介绍一下如何动态加载js。</p>
-<p>vue中常用的引入js文件的方式一般有三种</p>
-<ul>
-<li><p>在html文件中<code>&lt;script src=&quot;&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code>引入</p>
-</li>
-<li><p>在<code>main.js</code>或需要引用的<code>.vue</code>文件中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'../a'</span><span class="comment">//要用到export导出之后 才能用import导入.</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../a'</span><span class="comment">//和直接引入script标签是一样的</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>假设我们有这样一个比较极限的应用场景：</p>
-<p>我们在登录页需要支持facebook，google，微信等十多个平台的第三方登录，并且每个第三方登录所需要的js文件特别大，用我们常规的用法去加载的话在用户第一次使用的时候就需要加载特别多的js文件，势必会造成用户体验不好的情况</p>
-<p>那么我们应该怎么去优化呢</p>
-<h1 id="vue-plugin-load-script"><a href="#vue-plugin-load-script" class="headerlink" title="vue-plugin-load-script"></a>vue-plugin-load-script</h1><p>安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save vue-plugin-load-script</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// In main.js</span></span><br><span class="line"><span class="keyword">import</span> LoadScript <span class="keyword">from</span> <span class="string">'vue-plugin-load-script'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(LoadScript);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//login.vue</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    wxLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://wx登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    googleLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://谷歌登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样用户点击什么登录方式就会去加载对应的第三方登录需要的js，从而避免了加载过多不需要的js造成页面性能浪费</p>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>必备知识之Vue-Cli</title>
-    <url>/2020/06/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B9%8BVue-Cli/</url>
-    <content><![CDATA[<p>更快速构建vue项目</p>
-<a id="more"></a>
-
-<h1 id="快速原型开发"><a href="#快速原型开发" class="headerlink" title="快速原型开发"></a>快速原型开发</h1><p>你可以使用<code>vue serve</code>和<code>vue build</code>命令对单个vue文件快速进行原型开发</p>
-<h2 id="安装-vue-cli-service-global扩展"><a href="#安装-vue-cli-service-global扩展" class="headerlink" title="安装@vue/cli-service-global扩展"></a>安装<code>@vue/cli-service-global</code>扩展</h2><p><code>npm install  -g @vue/cli-service-global</code></p>
-<p>准备一个内容原型</p>
-<h2 id="vue-serve"><a href="#vue-serve" class="headerlink" title="vue serve"></a>vue serve</h2><p>启动一个服务并运行原型</p>
-<p><code>vue serve Hello.vue</code></p>
-<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><h2 id="vue-create"><a href="#vue-create" class="headerlink" title="vue create"></a>vue create</h2><p>创建一个vue项目</p>
-<p><code>vue create projectname</code></p>
-<h2 id="vue-ui"><a href="#vue-ui" class="headerlink" title="vue ui"></a>vue ui</h2><p>图形化项目管理</p>
-<p><code>vue ui</code></p>
-<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>Vue Cli使用了一套基于插件的架构。插件可以修改webpack的内部配置，也可以向vue-cli-serve注入命令。在项目创建的过程中，绝大部分列出的特性都是通过插件来实现的</p>
-<h2 id="在现有的项目中安装插件"><a href="#在现有的项目中安装插件" class="headerlink" title="在现有的项目中安装插件"></a>在现有的项目中安装插件</h2><p>如果你想在一个已经被创建好的项目中安装一个插件，可以使用 <code>vue add</code> 命令</p>
-<p><code>vue add router</code></p>
-<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><h2 id="处理资源路径"><a href="#处理资源路径" class="headerlink" title="处理资源路径"></a>处理资源路径</h2><p>当你在JavaScript、css或vue文件中使用相对路径(必须以<code>.</code>开头)引用一个静态资源时，该资源将被webpack处理。(public中文件webpack不会处理)</p>
-<h3 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h3><p>如果URL是一个绝对路径(例如<code>/images/foo.png</code>),他将会保留不变。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"/assets/logo.png"</span>&gt;</span>//当前服务器静态路径下 public会作为服务器静态路径</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"http://image.xx.com/logo.png"</span>&gt;</span>//某图片服务器线上地址</span><br></pre></td></tr></table></figure>
-
-<p>如果URL以<code>.</code>开头会作为一个相对模块请求被解释并基于文件系统相对路径</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果URL以<code>~</code>开头会作为一个模块请求被解析，这意味着你甚至可以引用Node模块中的资源</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"vue logo"</span> <span class="attr">src</span>=<span class="string">"~some-npm-package/foo.png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果URL以<code>@</code>开头会作为一个模块请求被解析，Vue Cli默认会设置一个指向<code>src</code>的别名<code>@</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Hello <span class="keyword">from</span> <span class="string">'@/components/Hello.vue'</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="何时使用public文件夹"><a href="#何时使用public文件夹" class="headerlink" title="何时使用public文件夹"></a>何时使用<code>public</code>文件夹</h3><p>通过webpack的处理并获得如下好处：</p>
-<ul>
-<li><p>脚本和样式表会被压缩并且打包在一起，从而避免额外的网络请求</p>
-</li>
-<li><p>文件丢失会直接在编译时报错，而不是到了用户端才会产生404错误</p>
-</li>
-<li><p>最终生成的文件名包含了内容哈希，因此不用担心浏览器缓存他们的老版本</p>
-</li>
-</ul>
-<p>以下的几种情况可以考虑使用public文件夹</p>
-<ul>
-<li><p>你需要在构建输出中指定一个固定的文件名字</p>
-</li>
-<li><p>你有上千个图片，需要动态引用他们的路径</p>
-</li>
-<li><p>有些库可能会和webpack不兼容，除了将其用一个独立的<code>&lt;script&gt;</code>标签引入没有别的办法</p>
-</li>
-</ul>
-<h3 id="使用public文件夹的注意事项"><a href="#使用public文件夹的注意事项" class="headerlink" title="使用public文件夹的注意事项"></a>使用public文件夹的注意事项</h3><p>如果你的应用没有部署在域名的根部，那么你需要为你的URL配置<code>publicPath</code>前缀</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vue.config.js</span></span><br><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">    publicPath: precess.env.NODE_ENV === <span class="string">'production'</span>?<span class="string">'线上所在目录'</span>:<span class="string">'本地所在目录 正常为 / '</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>public/index.html</code> 等通过<code>html-webpack-plugin</code>用作模板的HTML文件中，你需要用过<code>&lt;% =BASE_URL %&gt;</code> 设置链接前缀：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">href</span>=<span class="string">"&lt;% =BASE_URL %&gt;favicon.ico"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在模板中，先向组件传入BASE_URL：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        publicPath: process.env.BASE_URL</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在使用的时候</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;img :src=<span class="string">"`$&#123;publicPath&#125;my-image.png`"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>自己动手封装一个Vue表单组件</title>
     <url>/2020/06/%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AAVue%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<p>仿element-ui封装一个通用的表单组件</p>
@@ -1239,6 +1203,42 @@
 
 
 
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在vue项目中动态加载js</title>
+    <url>/2020/06/%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDjs/</url>
+    <content><![CDATA[<p>通常情况下，如果网页加载的js文件较多并且文件较大的时候，一次性加载完毕的话，会非常的影响网页加载的速度，当然将会严重影响用户体验，最终会影响的站点的人气，所以我们要想办法解决这个问题。</p>
+<a id="more"></a>
+
+<p>很多时候，加载的js代码在当前页面功能中并不需要，所以如果能够根据需要动态的加载js文件，那么将会极大的提高网页的加载速度，下面就通过代码实例介绍一下如何动态加载js。</p>
+<p>vue中常用的引入js文件的方式一般有三种</p>
+<ul>
+<li><p>在html文件中<code>&lt;script src=&quot;&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code>引入</p>
+</li>
+<li><p>在<code>main.js</code>或需要引用的<code>.vue</code>文件中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'../a'</span><span class="comment">//要用到export导出之后 才能用import导入.</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../a'</span><span class="comment">//和直接引入script标签是一样的</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>假设我们有这样一个比较极限的应用场景：</p>
+<p>我们在登录页需要支持facebook，google，微信等十多个平台的第三方登录，并且每个第三方登录所需要的js文件特别大，用我们常规的用法去加载的话在用户第一次使用的时候就需要加载特别多的js文件，势必会造成用户体验不好的情况</p>
+<p>那么我们应该怎么去优化呢</p>
+<h1 id="vue-plugin-load-script"><a href="#vue-plugin-load-script" class="headerlink" title="vue-plugin-load-script"></a>vue-plugin-load-script</h1><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save vue-plugin-load-script</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// In main.js</span></span><br><span class="line"><span class="keyword">import</span> LoadScript <span class="keyword">from</span> <span class="string">'vue-plugin-load-script'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(LoadScript);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//login.vue</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    wxLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://wx登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    googleLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://谷歌登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样用户点击什么登录方式就会去加载对应的第三方登录需要的js，从而避免了加载过多不需要的js造成页面性能浪费</p>
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>vue</category>

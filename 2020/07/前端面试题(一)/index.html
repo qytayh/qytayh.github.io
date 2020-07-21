@@ -17,7 +17,7 @@
 <p>举一个简单的例子</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Joker = <span class="string">"帅"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Joker</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()();<span class="comment">//输出：'帅'</span></span><br><span class="line"><span class="comment">//当然我们也可以这样，等同于fun()()</span></span><br><span class="line"><span class="keyword">var</span> temfun = fun();</span><br><span class="line"><span class="built_in">console</span>.log(temfun())</span><br></pre></td></tr></table></figure>
 
-<p> <strong>闭包的使用场景</strong></p>
+<p><strong>闭包的使用场景</strong></p>
 <p>封装局部变量</p>
 <p>例如：一个游戏，主人公有10条命，我们如果把<code>var live=10</code>写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。</p>
 <p>但如果写在局部作用域，会有如下问题：</p>
