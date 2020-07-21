@@ -13,25 +13,24 @@
 
 <h2 id="NAN-NAN-是否成立，为什么？"><a href="#NAN-NAN-是否成立，为什么？" class="headerlink" title="NAN === NAN 是否成立，为什么？"></a><code>NAN === NAN</code> 是否成立，为什么？</h2><pre><code>不成立。因为JavaScript规定，NaN表示的是非数字，但是这个非数字也是不同的，因此 NaN 不等于 NaN，两个NaN永远不可能相等。</code></pre><h2 id="0-1-0-2-0-3和-0-1-0-2-0-3-哪个成立，为什么？"><a href="#0-1-0-2-0-3和-0-1-0-2-0-3-哪个成立，为什么？" class="headerlink" title="0.1+0.2 == 0.3和 0.1+0.2 === 0.3 哪个成立，为什么？"></a><code>0.1+0.2 == 0.3</code>和 <code>0.1+0.2 === 0.3</code> 哪个成立，为什么？</h2><pre><code>都不成立.在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2！==0.3，这是为什么呢？在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。
 
-&gt; 可以通过 `(0.1 + 0.2).toFixed(2) // &quot;0.30&quot;` 和 `parseFloat((0.1 + 0.2).toFixed(2)) //0.3` 的方法使`0.1+0.2==0.3`</code></pre><h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><pre><code>**如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包。**
-
-举一个简单的例子
+&gt; 可以通过 `(0.1 + 0.2).toFixed(2) // &quot;0.30&quot;` 和 `parseFloat((0.1 + 0.2).toFixed(2)) //0.3` 的方法使`0.1+0.2==0.3`</code></pre><h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p><strong>如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包。</strong></p>
+<p>举一个简单的例子</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Joker = <span class="string">"帅"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Joker</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()();<span class="comment">//输出：'帅'</span></span><br><span class="line"><span class="comment">//当然我们也可以这样，等同于fun()()</span></span><br><span class="line"><span class="keyword">var</span> temfun = fun();</span><br><span class="line"><span class="built_in">console</span>.log(temfun())</span><br></pre></td></tr></table></figure>
 
-**闭包的使用场景**
+<p> <strong>闭包的使用场景</strong></p>
+<p>封装局部变量</p>
+<p>例如：一个游戏，主人公有10条命，我们如果把<code>var live=10</code>写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。</p>
+<p>但如果写在局部作用域，会有如下问题：</p>
+<ul>
+<li><p>在全局环境中调用不了</p>
+</li>
+<li><p>局部环境执行完毕后，会被清出环境栈，局部环境中的变量和函数都会垃圾回收机制回收。</p>
+</li>
+</ul>
+<p>因此我们用闭包去将<code>var live=10</code>变量封装起来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liveFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> live = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//以下是闭包函数代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">condition</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(condition==<span class="string">'add'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live+=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(condition==<span class="string">'reduce'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live-=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> live=liveFun()</span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'add'</span>)); <span class="comment">//执行闭包函数 ，10+1=11，输出：11</span></span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'reduce'</span>)); <span class="comment">//执行闭包函数 ，11-1=10，输出：10</span></span><br></pre></td></tr></table></figure>
 
-封装局部变量
-
-例如：一个游戏，主人公有10条命，我们如果把`var live=10`写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。
-
-但如果写在局部作用域，会有如下问题：
-
-- 在全局环境中调用不了
-
-- 局部环境执行完毕后，会被清出环境栈，局部环境中的变量和函数都会垃圾回收机制回收。
-
-因此我们用闭包去将`var live=10`变量封装起来
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liveFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> live = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//以下是闭包函数代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">condition</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(condition==<span class="string">'add'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live+=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(condition==<span class="string">'reduce'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live-=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> live=liveFun()</span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'add'</span>)); <span class="comment">//执行闭包函数 ，10+1=11，输出：11</span></span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'reduce'</span>)); <span class="comment">//执行闭包函数 ，11-1=10，输出：10</span></span><br></pre></td></tr></table></figure></code></pre><h2 id="箭头函数与普通函数的区别？"><a href="#箭头函数与普通函数的区别？" class="headerlink" title="箭头函数与普通函数的区别？"></a>箭头函数与普通函数的区别？</h2><p>区别：</p>
+<h2 id="箭头函数与普通函数的区别？"><a href="#箭头函数与普通函数的区别？" class="headerlink" title="箭头函数与普通函数的区别？"></a>箭头函数与普通函数的区别？</h2><p>区别：</p>
 <ul>
 <li>箭头函数没有自己的<code>this</code>属性，<code>arguments</code>属性、而普通函数有，箭头函数的<code>this</code>指向当前函数作用域的<code>this</code>。</li>
 <li>箭头函数没有不能使用<code>new</code>命令，因为没有自己的<code>this</code>，无法调用<code>call</code>，<code>apply</code>，没有prototype显示原型，所以不能作为构造函数。</li>
