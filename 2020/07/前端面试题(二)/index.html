@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="前端面试题(二)"><meta name="keywords" content="面试题"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>前端面试题(二) | Joker's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-router原理"><span class="toc-number">1.</span> <span class="toc-text">vue-router原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件间通信方式"><span class="toc-number">2.</span> <span class="toc-text">组件间通信方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2和vue3区别"><span class="toc-number">3.</span> <span class="toc-text">vue2和vue3区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述vue2双向绑定原理"><span class="toc-number">4.</span> <span class="toc-text">简述vue2双向绑定原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义指令"><span class="toc-number">5.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6特性"><span class="toc-number">6.</span> <span class="toc-text">ES6特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宏微任务"><span class="toc-number">7.</span> <span class="toc-text">宏微任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域"><span class="toc-number">8.</span> <span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承"><span class="toc-number">9.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型和原型链"><span class="toc-number">10.</span> <span class="toc-text">原型和原型链</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/qytayh" target="_blank" rel="noopener">follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">23</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">9</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/resume">Resume</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">前端面试题(二)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-07-21</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>高频面试题</p>
+<a id="more"></a>
+
+<h2 id="vue-router原理"><a href="#vue-router原理" class="headerlink" title="vue-router原理"></a>vue-router原理</h2><p>大型单页应用最显著特点之一就是采用前端路由系统，通过改变URL，在不重新请求页面的情况下，更新页面视图。</p>
+<p>页面都是由组件组成的，只需要把组件和路径相对应起来，就能把组件渲染出来。</p>
+<p>当用户点击<code>router-link</code>标签时，会去寻找它对应的to属性，它的to属性和js中配置的路径<code>{path:&#39;/home&#39;,component:Home}</code>中的path一一对应，从而找到了匹配的组件，最后把组件渲染到<code>router-view</code>标签所在的地方。</p>
+<p>前端路由时通过改变url，在不重新请求页面的情况下，更新页面视图。</p>
+<p>目前在浏览器环境中实现这一功能主要有两种：</p>
+<ul>
+<li><p>利用url中的hash：</p>
+<p>  在改变url的情况下，保证页面的不刷新。在2014年之前，大家是通过hash来实现路由，url hash就类似于：<br>  <code>https://www.xxx.com/#/login</code><br>  这种# 后面hash值的变化，并不会导致浏览器向服务器发出请求，浏览器不发出请求也就不会刷新页面。另外每次hash值变化都会触发hashchange这个事件，通过这个事件我们就可以知道hash值发生了哪些变化。然后我们就可以通过监听hashchange来实现更新页面部分内容的操作</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, matchAndUpdate)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchAndUpdate</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// todo 匹配 hash 做 dom 更新操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用H5中history：</p>
+<p>  14年后，因为HTML5标准发布。多了两个Api，<code>pushState</code>和<code>replaceState</code>,通过这两个api可以改变url地址且不会发送请求。同时还有<code>popstate</code>事件，通过这些就能用另一种方式实现前端路由了，原理和hash实现相同的。用了 HTML5 的实现，单页路由的 url 就不会多出一个#，变得更加美观。但因为没有 # 号，所以当用户刷新页面之类的操作时，浏览器还是会给服务器发送请求。为了避免出现这种情况，所以这个实现需要服务器的支持，需要把所有路由都重定向到根页面。<br>  内部使⽤<code>window.history.pushState</code>来处理url的变化，切换对应的组件</p>
+</li>
+</ul>
+<p><a href="https://qytayh.github.io/2020/07/vue-router%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0/">如果对具体代码实现感兴趣可以点击这里查看，<strong>vue-router源码实现</strong></a></p>
+<h2 id="组件间通信方式"><a href="#组件间通信方式" class="headerlink" title="组件间通信方式"></a>组件间通信方式</h2><p><a href="https://qytayh.github.io/2020/06/Vue%E7%BB%84%E4%BB%B6%E5%8C%96/">点击这里查看详情</a></p>
+<h2 id="vue2和vue3区别"><a href="#vue2和vue3区别" class="headerlink" title="vue2和vue3区别"></a>vue2和vue3区别</h2><ol>
+<li><p><strong>目录结构</strong></p>
+<p> vue-cli2.0与3.0在目录结构方面，有明显的不同</p>
+<p> vue-cli3.0移除了配置文件目录，config和build文件夹</p>
+<p> 同时移除了<code>static</code>静态文件夹，新增了<code>public</code>文件夹，打开层级目录还会发现，<code>index.html</code>移动到<code>public</code>中</p>
+</li>
+<li><p><strong>配置项</strong></p>
+<p> 3.0中config文件已经被移除，但是多了<code>.env.production</code>和<code>.env.development</code>文件，除了文件位置，实际配置起来和2.0没什么不同</p>
+<p> 没了<code>config</code>文件，跨域需要配置域名时，从<code>config/index.js</code>挪到了<code>vue.config.js</code>中，配置方法不变</p>
+</li>
+<li><p><strong>渲染</strong></p>
+<p> Vue2.x使用的Virtual Dom实现的渲染</p>
+<p> Vue3.0不论是原生的html标签还是vue组件，他们都会通过h函数来判断，如果是原生html标签，在运行时直接通过Virtual Dom来直接渲染，同样如果是组件会直接生成组件代码</p>
+</li>
+<li><p><strong>数据监听</strong></p>
+<p> Vue2.x大家都知道使用的是es5的<code>object.defineproperties</code>中<code>getter</code>和<code>setter</code>实现的，而vue3.0的版本，是基于<code>Proxy</code>进行监听的，其实基于<code>proxy</code>监听就是所谓的<code>lazy by default</code>，什么意思呢，就是只要你用到了才会监听，可以理解为‘按需监听’，官方给出的诠释是：速度加倍，同时内存占用还减半。</p>
+</li>
+<li><p><strong>按需引入</strong></p>
+<p> Vue2.x中new出的实例对象，所有的东西都在这个vue对象上，这样其实无论你用到还是没用到，都会跑一变。而vue3.0中可以用ES module imports按需引入，如：keep-alive内置组件、v-model指令，等等。</p>
+</li>
+</ol>
+<h2 id="简述vue2双向绑定原理"><a href="#简述vue2双向绑定原理" class="headerlink" title="简述vue2双向绑定原理"></a>简述vue2双向绑定原理</h2><ol>
+<li><p>由页面-&gt;数据的变化：通过给页面元素添加对应的事件监听来实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model=<span class="string">"value"</span> oninput=<span class="string">"()=&gt;this.handleInput($event)"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleInput</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = e.target.value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由数据-&gt;页面的变化:通过数据劫持(<code>Object.defineProperty</code>)+发布订阅模式来实现的<br> 具体流程：</p>
+<ul>
+<li><p>Compile解析器会将⻚⾯上的插值表达式/指定翻译成对应Watcher以添加到订阅器维护的列表中</p>
+</li>
+<li><p>通过<code>Object.defineProperty</code>劫持数据的变化，⼀旦数据源发⽣变化会触发对应的set⽅法</p>
+</li>
+<li><p>在set⽅法中，通知订阅器(Dep)对象中维护的所有订阅者(Watcher)列表更新</p>
+</li>
+<li><p>每⼀个Watch会去更新对应的⻚⾯</p>
+</li>
+</ul>
+</li>
+<li><p>关于发布订阅模式</p>
+<p> 发布订阅模式又叫观察者模式，他定义了一种一对多的关系，让多个观察者对象同时监听某一个主体对象的变化，当这个主题对象的状态发生变化的时候就会通知所有的观察者对象，使得他们能够自动更新自己。</p>
+</li>
+</ol>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><h2 id="ES6特性"><a href="#ES6特性" class="headerlink" title="ES6特性"></a>ES6特性</h2><h2 id="宏微任务"><a href="#宏微任务" class="headerlink" title="宏微任务"></a>宏微任务</h2><h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h2 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h2><p><a href="https://qytayh.github.io/2020/06/Vue%E7%BB%84%E4%BB%B6%E5%8C%96/">点击这里查看详情</a></p>
+<!-- markdownlint-disable MD041 MD002--> </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qytayh.github.io/2020/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%BA%8C)/">https://qytayh.github.io/2020/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%BA%8C)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qytayh.github.io">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80)/"><span>前端面试题(一)</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

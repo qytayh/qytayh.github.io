@@ -768,38 +768,27 @@
 <a id="more"></a>
 
 
-<ol>
-<li><p><code>NAN === NAN</code> 是否成立，为什么？</p>
-<p> 不成立。因为JavaScript规定，NaN表示的是非数字，但是这个非数字也是不同的，因此 NaN 不等于 NaN，两个NaN永远不可能相等。</p>
-</li>
-<li><p><code>0.1+0.2 == 0.3</code>和 <code>0.1+0.2 === 0.3</code> 哪个成立，为什么？</p>
-<p> 都不成立.在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2！==0.3，这是为什么呢？在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。</p>
-<blockquote>
-<p>可以通过 <code>(0.1 + 0.2).toFixed(2) // &quot;0.30&quot;</code> 和 <code>parseFloat((0.1 + 0.2).toFixed(2)) //0.3</code> 的方法使<code>0.1+0.2==0.3</code></p>
-</blockquote>
-</li>
-<li><p>什么是闭包？</p>
-<p> <strong>如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包。</strong></p>
-<p> 举一个简单的例子</p>
- <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Joker = <span class="string">"帅"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Joker</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()();<span class="comment">//输出：'帅'</span></span><br><span class="line"><span class="comment">//当然我们也可以这样，等同于fun()()</span></span><br><span class="line"><span class="keyword">var</span> temfun = fun();</span><br><span class="line"><span class="built_in">console</span>.log(temfun())</span><br></pre></td></tr></table></figure>
+<h2 id="NAN-NAN-是否成立，为什么？"><a href="#NAN-NAN-是否成立，为什么？" class="headerlink" title="NAN === NAN 是否成立，为什么？"></a><code>NAN === NAN</code> 是否成立，为什么？</h2><pre><code>不成立。因为JavaScript规定，NaN表示的是非数字，但是这个非数字也是不同的，因此 NaN 不等于 NaN，两个NaN永远不可能相等。</code></pre><h2 id="0-1-0-2-0-3和-0-1-0-2-0-3-哪个成立，为什么？"><a href="#0-1-0-2-0-3和-0-1-0-2-0-3-哪个成立，为什么？" class="headerlink" title="0.1+0.2 == 0.3和 0.1+0.2 === 0.3 哪个成立，为什么？"></a><code>0.1+0.2 == 0.3</code>和 <code>0.1+0.2 === 0.3</code> 哪个成立，为什么？</h2><pre><code>都不成立.在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2！==0.3，这是为什么呢？在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。
 
-<p> <strong>闭包的使用场景</strong></p>
-<p> 封装局部变量</p>
-<p> 例如：一个游戏，主人公有10条命，我们如果把<code>var live=10</code>写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。</p>
-<p> 但如果写在局部作用域，会有如下问题：</p>
-<ul>
-<li><p>在全局环境中调用不了</p>
-</li>
-<li><p>局部环境执行完毕后，会被清出环境栈，局部环境中的变量和函数都会垃圾回收机制回收。</p>
-<p>因此我们用闭包去将<code>var live=10</code>变量封装起来</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liveFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> live = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//以下是闭包函数代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">condition</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(condition==<span class="string">'add'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live+=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(condition==<span class="string">'reduce'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live-=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> live=liveFun()</span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'add'</span>)); <span class="comment">//执行闭包函数 ，10+1=11，输出：11</span></span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'reduce'</span>)); <span class="comment">//执行闭包函数 ，11-1=10，输出：10</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>箭头函数与普通函数的区别？</p>
-</li>
-</ol>
-<p>区别：</p>
+&gt; 可以通过 `(0.1 + 0.2).toFixed(2) // &quot;0.30&quot;` 和 `parseFloat((0.1 + 0.2).toFixed(2)) //0.3` 的方法使`0.1+0.2==0.3`</code></pre><h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><pre><code>**如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包。**
+
+举一个简单的例子
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Joker = <span class="string">"帅"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Joker</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()();<span class="comment">//输出：'帅'</span></span><br><span class="line"><span class="comment">//当然我们也可以这样，等同于fun()()</span></span><br><span class="line"><span class="keyword">var</span> temfun = fun();</span><br><span class="line"><span class="built_in">console</span>.log(temfun())</span><br></pre></td></tr></table></figure>
+
+**闭包的使用场景**
+
+封装局部变量
+
+例如：一个游戏，主人公有10条命，我们如果把`var live=10`写在全局作用域的话，全局中任何地方都能调用修改，就会出现安全性，容易出bug。
+
+但如果写在局部作用域，会有如下问题：
+
+- 在全局环境中调用不了
+
+- 局部环境执行完毕后，会被清出环境栈，局部环境中的变量和函数都会垃圾回收机制回收。
+
+因此我们用闭包去将`var live=10`变量封装起来
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liveFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> live = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//以下是闭包函数代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">condition</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(condition==<span class="string">'add'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live+=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(condition==<span class="string">'reduce'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> live-=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> live=liveFun()</span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'add'</span>)); <span class="comment">//执行闭包函数 ，10+1=11，输出：11</span></span><br><span class="line"><span class="built_in">console</span>.log(live(<span class="string">'reduce'</span>)); <span class="comment">//执行闭包函数 ，11-1=10，输出：10</span></span><br></pre></td></tr></table></figure></code></pre><h2 id="箭头函数与普通函数的区别？"><a href="#箭头函数与普通函数的区别？" class="headerlink" title="箭头函数与普通函数的区别？"></a>箭头函数与普通函数的区别？</h2><p>区别：</p>
 <ul>
 <li>箭头函数没有自己的<code>this</code>属性，<code>arguments</code>属性、而普通函数有，箭头函数的<code>this</code>指向当前函数作用域的<code>this</code>。</li>
 <li>箭头函数没有不能使用<code>new</code>命令，因为没有自己的<code>this</code>，无法调用<code>call</code>，<code>apply</code>，没有prototype显示原型，所以不能作为构造函数。</li>
@@ -810,10 +799,7 @@
 <li>没有箭头函数的时候，函数闭包<code>var that = this</code>的事没少干，有了箭头函数，就不需要这么写了</li>
 <li>极简语法，函数式风格</li>
 </ul>
-<ol start="5">
-<li>js原型原型链</li>
-</ol>
-<p><strong>首先我们要清除明白两个概念</strong></p>
+<h2 id="js原型原型链"><a href="#js原型原型链" class="headerlink" title="js原型原型链"></a>js原型原型链</h2><p><strong>首先我们要清除明白两个概念</strong></p>
 <ul>
 <li><p>js分为函数对象和普通对象，每个对象都有<code>__proto__</code>属性，但是只有函数对象才有<code>prototype</code>属性</p>
 </li>
@@ -841,22 +827,13 @@
 <blockquote>
 <p>原型对象的作用，是用来存放实例中共有的那部份属性、方法，可以大大减少内存消耗。</p>
 </blockquote>
-<ol start="6">
-<li><p>promise和callback的区别</p>
-</li>
-<li><p>em、rem 是什么？</p>
-</li>
-</ol>
-<ul>
+<h2 id="promise和callback的区别"><a href="#promise和callback的区别" class="headerlink" title="promise和callback的区别"></a>promise和callback的区别</h2><h2 id="em、rem-是什么？"><a href="#em、rem-是什么？" class="headerlink" title="em、rem 是什么？"></a>em、rem 是什么？</h2><ul>
 <li><p>em：em是相对于⽗元素的尺⼨单位</p>
 </li>
 <li><p>rem：相对于html元素的尺⼨单位（html默认font-size:16px）</p>
 </li>
 </ul>
-<ol start="8">
-<li>Vue为什么使用虚拟dom？</li>
-</ol>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
+<h2 id="Vue为什么使用虚拟dom？"><a href="#Vue为什么使用虚拟dom？" class="headerlink" title="Vue为什么使用虚拟dom？"></a>Vue为什么使用虚拟dom？</h2><!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>面试题</category>
       </categories>
@@ -1109,6 +1086,78 @@
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端面试题(二)</title>
+    <url>/2020/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%BA%8C)/</url>
+    <content><![CDATA[<p>高频面试题</p>
+<a id="more"></a>
+
+<h2 id="vue-router原理"><a href="#vue-router原理" class="headerlink" title="vue-router原理"></a>vue-router原理</h2><p>大型单页应用最显著特点之一就是采用前端路由系统，通过改变URL，在不重新请求页面的情况下，更新页面视图。</p>
+<p>页面都是由组件组成的，只需要把组件和路径相对应起来，就能把组件渲染出来。</p>
+<p>当用户点击<code>router-link</code>标签时，会去寻找它对应的to属性，它的to属性和js中配置的路径<code>{path:&#39;/home&#39;,component:Home}</code>中的path一一对应，从而找到了匹配的组件，最后把组件渲染到<code>router-view</code>标签所在的地方。</p>
+<p>前端路由时通过改变url，在不重新请求页面的情况下，更新页面视图。</p>
+<p>目前在浏览器环境中实现这一功能主要有两种：</p>
+<ul>
+<li><p>利用url中的hash：</p>
+<p>  在改变url的情况下，保证页面的不刷新。在2014年之前，大家是通过hash来实现路由，url hash就类似于：<br>  <code>https://www.xxx.com/#/login</code><br>  这种# 后面hash值的变化，并不会导致浏览器向服务器发出请求，浏览器不发出请求也就不会刷新页面。另外每次hash值变化都会触发hashchange这个事件，通过这个事件我们就可以知道hash值发生了哪些变化。然后我们就可以通过监听hashchange来实现更新页面部分内容的操作</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, matchAndUpdate)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchAndUpdate</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// todo 匹配 hash 做 dom 更新操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用H5中history：</p>
+<p>  14年后，因为HTML5标准发布。多了两个Api，<code>pushState</code>和<code>replaceState</code>,通过这两个api可以改变url地址且不会发送请求。同时还有<code>popstate</code>事件，通过这些就能用另一种方式实现前端路由了，原理和hash实现相同的。用了 HTML5 的实现，单页路由的 url 就不会多出一个#，变得更加美观。但因为没有 # 号，所以当用户刷新页面之类的操作时，浏览器还是会给服务器发送请求。为了避免出现这种情况，所以这个实现需要服务器的支持，需要把所有路由都重定向到根页面。<br>  内部使⽤<code>window.history.pushState</code>来处理url的变化，切换对应的组件</p>
+</li>
+</ul>
+<p><a href="https://qytayh.github.io/2020/07/vue-router%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0/">如果对具体代码实现感兴趣可以点击这里查看，<strong>vue-router源码实现</strong></a></p>
+<h2 id="组件间通信方式"><a href="#组件间通信方式" class="headerlink" title="组件间通信方式"></a>组件间通信方式</h2><p><a href="https://qytayh.github.io/2020/06/Vue%E7%BB%84%E4%BB%B6%E5%8C%96/">点击这里查看详情</a></p>
+<h2 id="vue2和vue3区别"><a href="#vue2和vue3区别" class="headerlink" title="vue2和vue3区别"></a>vue2和vue3区别</h2><ol>
+<li><p><strong>目录结构</strong></p>
+<p> vue-cli2.0与3.0在目录结构方面，有明显的不同</p>
+<p> vue-cli3.0移除了配置文件目录，config和build文件夹</p>
+<p> 同时移除了<code>static</code>静态文件夹，新增了<code>public</code>文件夹，打开层级目录还会发现，<code>index.html</code>移动到<code>public</code>中</p>
+</li>
+<li><p><strong>配置项</strong></p>
+<p> 3.0中config文件已经被移除，但是多了<code>.env.production</code>和<code>.env.development</code>文件，除了文件位置，实际配置起来和2.0没什么不同</p>
+<p> 没了<code>config</code>文件，跨域需要配置域名时，从<code>config/index.js</code>挪到了<code>vue.config.js</code>中，配置方法不变</p>
+</li>
+<li><p><strong>渲染</strong></p>
+<p> Vue2.x使用的Virtual Dom实现的渲染</p>
+<p> Vue3.0不论是原生的html标签还是vue组件，他们都会通过h函数来判断，如果是原生html标签，在运行时直接通过Virtual Dom来直接渲染，同样如果是组件会直接生成组件代码</p>
+</li>
+<li><p><strong>数据监听</strong></p>
+<p> Vue2.x大家都知道使用的是es5的<code>object.defineproperties</code>中<code>getter</code>和<code>setter</code>实现的，而vue3.0的版本，是基于<code>Proxy</code>进行监听的，其实基于<code>proxy</code>监听就是所谓的<code>lazy by default</code>，什么意思呢，就是只要你用到了才会监听，可以理解为‘按需监听’，官方给出的诠释是：速度加倍，同时内存占用还减半。</p>
+</li>
+<li><p><strong>按需引入</strong></p>
+<p> Vue2.x中new出的实例对象，所有的东西都在这个vue对象上，这样其实无论你用到还是没用到，都会跑一变。而vue3.0中可以用ES module imports按需引入，如：keep-alive内置组件、v-model指令，等等。</p>
+</li>
+</ol>
+<h2 id="简述vue2双向绑定原理"><a href="#简述vue2双向绑定原理" class="headerlink" title="简述vue2双向绑定原理"></a>简述vue2双向绑定原理</h2><ol>
+<li><p>由页面-&gt;数据的变化：通过给页面元素添加对应的事件监听来实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input v-model=<span class="string">"value"</span> oninput=<span class="string">"()=&gt;this.handleInput($event)"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleInput</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = e.target.value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由数据-&gt;页面的变化:通过数据劫持(<code>Object.defineProperty</code>)+发布订阅模式来实现的<br> 具体流程：</p>
+<ul>
+<li><p>Compile解析器会将⻚⾯上的插值表达式/指定翻译成对应Watcher以添加到订阅器维护的列表中</p>
+</li>
+<li><p>通过<code>Object.defineProperty</code>劫持数据的变化，⼀旦数据源发⽣变化会触发对应的set⽅法</p>
+</li>
+<li><p>在set⽅法中，通知订阅器(Dep)对象中维护的所有订阅者(Watcher)列表更新</p>
+</li>
+<li><p>每⼀个Watch会去更新对应的⻚⾯</p>
+</li>
+</ul>
+</li>
+<li><p>关于发布订阅模式</p>
+<p> 发布订阅模式又叫观察者模式，他定义了一种一对多的关系，让多个观察者对象同时监听某一个主体对象的变化，当这个主题对象的状态发生变化的时候就会通知所有的观察者对象，使得他们能够自动更新自己。</p>
+</li>
+</ol>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><h2 id="ES6特性"><a href="#ES6特性" class="headerlink" title="ES6特性"></a>ES6特性</h2><h2 id="宏微任务"><a href="#宏微任务" class="headerlink" title="宏微任务"></a>宏微任务</h2><h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h2 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h2><p><a href="https://qytayh.github.io/2020/06/Vue%E7%BB%84%E4%BB%B6%E5%8C%96/">点击这里查看详情</a></p>
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
       </tags>
   </entry>
 </search>
