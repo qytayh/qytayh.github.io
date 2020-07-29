@@ -21,7 +21,7 @@
 
 <p>实践中通常用Vue代替Bus,因为Vue已经实现了相应的接口</p>
 <h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>创建唯一的全局数据管理者store，通过他管理数据并通知组件状态变更</p>
-<p>详细见<a href="https://qytayh.github.io/2020/06/10/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/">Vue统一状态管理——Vuex</a></p>
+<p>详细见<a href="https://qytayh.github.io/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/">Vue统一状态管理——Vuex</a></p>
 <h2 id="parent-root"><a href="#parent-root" class="headerlink" title="$parent/$root"></a>$parent/$root</h2><p>兄弟组件之间通信可以通过共同的祖辈搭桥，$parent或$root,与Bus总线类似</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//brother1</span></span><br><span class="line"><span class="keyword">this</span>.$parent.$on(<span class="string">'foo'</span>,msg =&gt; &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//brother2</span></span><br><span class="line"><span class="keyword">this</span>.$parent.$emit(<span class="string">'foo'</span>,msg)</span><br></pre></td></tr></table></figure>
 
