@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue中Watch和Computed的差异</title>
+    <url>/2020/05/Vue%E4%B8%ADWatch%E5%92%8CComputed%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
+    <content><![CDATA[<p>计算属性 vs 监听器</p>
+<a id="more"></a>
+
+<h1 id="语境上的差异"><a href="#语境上的差异" class="headerlink" title="语境上的差异"></a>语境上的差异</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个值变化了，我要做些事情，适合一个值影响多个值的情形</span></span><br><span class="line">watch:&#123;</span><br><span class="line">    firstname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;,</span><br><span class="line">    lastname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个值由其他值得来，这些值变化了我也要变，适合多个值影响一个值的情形</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    fullname()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="计算属性有缓存性"><a href="#计算属性有缓存性" class="headerlink" title="计算属性有缓存性"></a>计算属性有缓存性</h1><p>计算所得的值如果没有变化不会重复执行</p>
+<h1 id="监听器选项"><a href="#监听器选项" class="headerlink" title="监听器选项"></a>监听器选项</h1><p>监听器选项提供了更通用的方法，适合执行异步操作或者较大开销操作的情况</p>
+<p><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">点击查看范例</a></p>
+<p>我们可以在范例中看到，在created的时候将我们要发送的请求做了一次防抖处理的封装，输入停止500毫秒后才会触发，这样就可以很有效的控制请求的频率</p>
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git常用命令</title>
     <url>/2020/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>日常工作中的git高频命令</p>
@@ -61,26 +81,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue中Watch和Computed的差异</title>
-    <url>/2020/05/Vue%E4%B8%ADWatch%E5%92%8CComputed%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
-    <content><![CDATA[<p>计算属性 vs 监听器</p>
-<a id="more"></a>
-
-<h1 id="语境上的差异"><a href="#语境上的差异" class="headerlink" title="语境上的差异"></a>语境上的差异</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个值变化了，我要做些事情，适合一个值影响多个值的情形</span></span><br><span class="line">watch:&#123;</span><br><span class="line">    firstname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;,</span><br><span class="line">    lastname(newval,oldval)&#123;</span><br><span class="line">        <span class="keyword">this</span>.fullname = <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个值由其他值得来，这些值变化了我也要变，适合多个值影响一个值的情形</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    fullname()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">''</span> + <span class="keyword">this</span>.lastname</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="计算属性有缓存性"><a href="#计算属性有缓存性" class="headerlink" title="计算属性有缓存性"></a>计算属性有缓存性</h1><p>计算所得的值如果没有变化不会重复执行</p>
-<h1 id="监听器选项"><a href="#监听器选项" class="headerlink" title="监听器选项"></a>监听器选项</h1><p>监听器选项提供了更通用的方法，适合执行异步操作或者较大开销操作的情况</p>
-<p><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">点击查看范例</a></p>
-<p>我们可以在范例中看到，在created的时候将我们要发送的请求做了一次防抖处理的封装，输入停止500毫秒后才会触发，这样就可以很有效的控制请求的频率</p>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo简单使用说明</title>
     <url>/2020/05/hexo%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<h1 id="一些使用hexo常用的命令"><a href="#一些使用hexo常用的命令" class="headerlink" title="一些使用hexo常用的命令"></a>一些使用hexo常用的命令</h1><a id="more"></a>
@@ -121,64 +121,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>不好好工作会怎么样呢</title>
-    <url>/2020/05/%E4%B8%8D%E5%A5%BD%E5%A5%BD%E5%B7%A5%E4%BD%9C%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7%E5%91%A2/</url>
-    <content><![CDATA[<p>经常看到有人抱怨工作辛苦</p>
-<p>那么当你看完这个，还会继续抱怨吗</p>
-<a id="more"></a>
-
-
-
-
-<video src='1.mp4 ' type='video/mp4' controls='controls'  width='100%' height='100%'>
-</video>
-
-
-
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>闲谈</category>
-      </categories>
-      <tags>
-        <tag>闲谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在vue中使用graphql</title>
-    <url>/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/</url>
-    <content><![CDATA[<p>记录在vue中使用graphql踩过的坑</p>
-<a id="more"></a>
-<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>首先我们保证已经有了一个vue项目，输入以下命令</p>
-<p><code>npm install --save vue-apollo graphql apollo-client apollo-link apollo-link-http apollo-cache-inmemory graphql-tag</code></p>
-<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>创建apollo.js并输入以下代码</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createHttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span></span><br><span class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span></span><br><span class="line"><span class="keyword">import</span> &#123;ApolloLink&#125; <span class="keyword">from</span> <span class="string">'apollo-link'</span></span><br><span class="line"><span class="comment">// 与 API 的 HTTP 连接</span></span><br><span class="line"><span class="keyword">const</span> httpLink = createHttpLink(&#123;</span><br><span class="line">  <span class="comment">// 你需要在这里使用绝对路径</span></span><br><span class="line">  uri: process.env.VUE_APP_BASEURL + <span class="string">'graphql'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> middlewareLink = <span class="keyword">new</span> ApolloLink(<span class="function">(<span class="params">operation, forward</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">//配置token验证</span></span><br><span class="line">  <span class="keyword">let</span> api_token = <span class="built_in">JSON</span>.parse(sessionStorage.getItem(<span class="string">'api_token'</span>)!)</span><br><span class="line">  <span class="keyword">if</span> (api_token) &#123;</span><br><span class="line">      token = api_token</span><br><span class="line">  &#125;</span><br><span class="line">  operation.setContext(&#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">          Authorization: <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span> || <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> forward(operation)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 缓存实现</span></span><br><span class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache()</span><br><span class="line"><span class="comment">// 创建 apollo 客户端</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> apolloClient = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  link: middlewareLink.concat(httpLink),</span><br><span class="line">  cache,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>然后在main.js中引入</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apollo <span class="keyword">from</span> <span class="string">'./plugins/apollo'</span></span><br><span class="line"><span class="keyword">import</span> VueApollo <span class="keyword">from</span> <span class="string">'vue-apollo'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueApollo)</span><br><span class="line"><span class="keyword">const</span> apolloProvider = <span class="keyword">new</span> VueApollo(&#123;</span><br><span class="line">  defaultClient: apollo.apolloClient,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>使用 apolloProvider 选项将它添加到你的应用程序</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  vuetify,</span><br><span class="line">  i18n,</span><br><span class="line">  store,</span><br><span class="line">  apolloProvider,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在我们需要使用graphql的页面引入<code>gql</code></p>
-<p><code>import gql from &#39;graphql-tag&#39;</code></p>
-<p>然后创建一个js文件<code>query.js</code>用来编写查询语句，并在我们使用graphql的页面引入</p>
-<p><code>import * as sql from &#39;./query&#39;</code></p>
-<p>在<code>query.js</code>中添加查询代码如下</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> report1 = gql <span class="string">`query($id: ID!)&#123;</span></span><br><span class="line"><span class="string">     contracts(first:10,id:$id)&#123;</span></span><br><span class="line"><span class="string">        data&#123;</span></span><br><span class="line"><span class="string">            id</span></span><br><span class="line"><span class="string">            address</span></span><br><span class="line"><span class="string">            contract_no</span></span><br><span class="line"><span class="string">            order&#123;</span></span><br><span class="line"><span class="string">                contract_id</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br></pre></td></tr></table></figure>
-
-<p>然后回到我们需要使用apollo的页面，使用如下方法进行查询</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$apollo.query(&#123;</span><br><span class="line">          query: sql.report1,</span><br><span class="line">          variables: &#123;</span><br><span class="line">            id: <span class="number">195</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          fetchPolicy:<span class="string">"no-cache"</span>,<span class="comment">//禁止缓存</span></span><br><span class="line">      &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">      &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<img src="/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/1.png" class="" title="[如图，我们便得到了查询结果]">
-
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>vue</category>
-        <category>graphql</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>graphql</tag>
       </tags>
   </entry>
   <entry>
@@ -257,6 +199,64 @@
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>不好好工作会怎么样呢</title>
+    <url>/2020/05/%E4%B8%8D%E5%A5%BD%E5%A5%BD%E5%B7%A5%E4%BD%9C%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7%E5%91%A2/</url>
+    <content><![CDATA[<p>经常看到有人抱怨工作辛苦</p>
+<p>那么当你看完这个，还会继续抱怨吗</p>
+<a id="more"></a>
+
+
+
+
+<video src='1.mp4 ' type='video/mp4' controls='controls'  width='100%' height='100%'>
+</video>
+
+
+
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>闲谈</category>
+      </categories>
+      <tags>
+        <tag>闲谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在vue中使用graphql</title>
+    <url>/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/</url>
+    <content><![CDATA[<p>记录在vue中使用graphql踩过的坑</p>
+<a id="more"></a>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>首先我们保证已经有了一个vue项目，输入以下命令</p>
+<p><code>npm install --save vue-apollo graphql apollo-client apollo-link apollo-link-http apollo-cache-inmemory graphql-tag</code></p>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>创建apollo.js并输入以下代码</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createHttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span></span><br><span class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span></span><br><span class="line"><span class="keyword">import</span> &#123;ApolloLink&#125; <span class="keyword">from</span> <span class="string">'apollo-link'</span></span><br><span class="line"><span class="comment">// 与 API 的 HTTP 连接</span></span><br><span class="line"><span class="keyword">const</span> httpLink = createHttpLink(&#123;</span><br><span class="line">  <span class="comment">// 你需要在这里使用绝对路径</span></span><br><span class="line">  uri: process.env.VUE_APP_BASEURL + <span class="string">'graphql'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> middlewareLink = <span class="keyword">new</span> ApolloLink(<span class="function">(<span class="params">operation, forward</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">//配置token验证</span></span><br><span class="line">  <span class="keyword">let</span> api_token = <span class="built_in">JSON</span>.parse(sessionStorage.getItem(<span class="string">'api_token'</span>)!)</span><br><span class="line">  <span class="keyword">if</span> (api_token) &#123;</span><br><span class="line">      token = api_token</span><br><span class="line">  &#125;</span><br><span class="line">  operation.setContext(&#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">          Authorization: <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span> || <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> forward(operation)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 缓存实现</span></span><br><span class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache()</span><br><span class="line"><span class="comment">// 创建 apollo 客户端</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> apolloClient = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  link: middlewareLink.concat(httpLink),</span><br><span class="line">  cache,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后在main.js中引入</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apollo <span class="keyword">from</span> <span class="string">'./plugins/apollo'</span></span><br><span class="line"><span class="keyword">import</span> VueApollo <span class="keyword">from</span> <span class="string">'vue-apollo'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueApollo)</span><br><span class="line"><span class="keyword">const</span> apolloProvider = <span class="keyword">new</span> VueApollo(&#123;</span><br><span class="line">  defaultClient: apollo.apolloClient,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>使用 apolloProvider 选项将它添加到你的应用程序</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  vuetify,</span><br><span class="line">  i18n,</span><br><span class="line">  store,</span><br><span class="line">  apolloProvider,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在我们需要使用graphql的页面引入<code>gql</code></p>
+<p><code>import gql from &#39;graphql-tag&#39;</code></p>
+<p>然后创建一个js文件<code>query.js</code>用来编写查询语句，并在我们使用graphql的页面引入</p>
+<p><code>import * as sql from &#39;./query&#39;</code></p>
+<p>在<code>query.js</code>中添加查询代码如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> report1 = gql <span class="string">`query($id: ID!)&#123;</span></span><br><span class="line"><span class="string">     contracts(first:10,id:$id)&#123;</span></span><br><span class="line"><span class="string">        data&#123;</span></span><br><span class="line"><span class="string">            id</span></span><br><span class="line"><span class="string">            address</span></span><br><span class="line"><span class="string">            contract_no</span></span><br><span class="line"><span class="string">            order&#123;</span></span><br><span class="line"><span class="string">                contract_id</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br></pre></td></tr></table></figure>
+
+<p>然后回到我们需要使用apollo的页面，使用如下方法进行查询</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$apollo.query(&#123;</span><br><span class="line">          query: sql.report1,</span><br><span class="line">          variables: &#123;</span><br><span class="line">            id: <span class="number">195</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          fetchPolicy:<span class="string">"no-cache"</span>,<span class="comment">//禁止缓存</span></span><br><span class="line">      &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">      &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8graphql/1.png" class="" title="[如图，我们便得到了查询结果]">
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>vue</category>
+        <category>graphql</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>graphql</tag>
       </tags>
   </entry>
   <entry>
@@ -376,33 +376,75 @@
       </tags>
   </entry>
   <entry>
-    <title>在vue项目中动态加载js</title>
-    <url>/2020/06/%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDjs/</url>
-    <content><![CDATA[<p>通常情况下，如果网页加载的js文件较多并且文件较大的时候，一次性加载完毕的话，会非常的影响网页加载的速度，当然将会严重影响用户体验，最终会影响的站点的人气，所以我们要想办法解决这个问题。</p>
+    <title>Vue统一状态管理——Vuex</title>
+    <url>/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/</url>
+    <content><![CDATA[<p>Vuex是一个专为Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状<br>态，并以相应的规则保证状态以可预测的方式发生变化。</p>
 <a id="more"></a>
 
-<p>很多时候，加载的js代码在当前页面功能中并不需要，所以如果能够根据需要动态的加载js文件，那么将会极大的提高网页的加载速度，下面就通过代码实例介绍一下如何动态加载js。</p>
-<p>vue中常用的引入js文件的方式一般有三种</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><code>vue add vuex</code></p>
+<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>将应用全局状态定义在state中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">state: &#123;</span><br><span class="line"> isLogin: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>修改State只能通过Mutation</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    login(state) &#123;</span><br><span class="line">        state.isLogin = <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    logout(state) &#123;</span><br><span class="line">        state.isLogin = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取和修改状态"><a href="#获取和修改状态" class="headerlink" title="获取和修改状态"></a>获取和修改状态</h2><p>使用store.state获取状态</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!$store.state.isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"logout"</span> <span class="attr">v-else</span>&gt;</span>登出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改状态只能通过store.dispatch(mutation)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'login'</span>)</span><br><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'logout'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 类似于 mutation，不同在于：</p>
 <ul>
-<li><p>在html文件中<code>&lt;script src=&quot;&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code>引入</p>
-</li>
-<li><p>在<code>main.js</code>或需要引用的<code>.vue</code>文件中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'../a'</span><span class="comment">//要用到export导出之后 才能用import导入.</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../a'</span><span class="comment">//和直接引入script标签是一样的</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li>Action 提交的是 mutation，而不是直接变更状态。</li>
+<li>Action 可以包含任意异步操作。</li>
 </ul>
-<p>假设我们有这样一个比较极限的应用场景：</p>
-<p>我们在登录页需要支持facebook，google，微信等十多个平台的第三方登录，并且每个第三方登录所需要的js文件特别大，用我们常规的用法去加载的话在用户第一次使用的时候就需要加载特别多的js文件，势必会造成用户体验不好的情况</p>
-<p>那么我们应该怎么去优化呢</p>
-<h1 id="vue-plugin-load-script"><a href="#vue-plugin-load-script" class="headerlink" title="vue-plugin-load-script"></a>vue-plugin-load-script</h1><p>安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save vue-plugin-load-script</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//参数1是vuex传递的上下文context:&#123;commit,dispatch,state&#125;</span></span><br><span class="line">login(&#123;commit&#125;, username) &#123;</span><br><span class="line">    <span class="comment">//模拟登陆api调用，1s后如果登录名是admin则登陆成功</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (username === <span class="string">'admin'</span>) &#123;</span><br><span class="line">                commit(<span class="string">'login'</span>)</span><br><span class="line">                resolve()</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                reject()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// In main.js</span></span><br><span class="line"><span class="keyword">import</span> LoadScript <span class="keyword">from</span> <span class="string">'vue-plugin-load-script'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(LoadScript);</span><br></pre></td></tr></table></figure>
+<p>派发动作，触发actions</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'login'</span>, <span class="string">'admin'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.$router.push(<span class="keyword">this</span>.$route.query.redirect)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'用户名或密码错误'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//login.vue</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    wxLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://wx登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    googleLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://谷歌登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>使用modules定义多个子模块有利于组件复杂状态</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">'./user'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules:&#123;</span><br><span class="line">        user,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>这样用户点击什么登录方式就会去加载对应的第三方登录需要的js，从而避免了加载过多不需要的js造成页面性能浪费</p>
+<p>移动先前登陆状态相关代码到store文件夹下新建的user.js中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespaced: <span class="literal">true</span>,<span class="comment">//避免命名冲突</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问方式相应变化</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Login.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!$store.state.user.isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'user/login'</span>, <span class="string">'admin'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> redirect = <span class="keyword">this</span>.$route.query.redirect || <span class="string">'/'</span></span><br><span class="line">    <span class="keyword">this</span>.$router.push(redirect)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'用户名或密码错误'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// router/index.js</span></span><br><span class="line">store.state.user.isLogin</span><br></pre></td></tr></table></figure>
+
+<h2 id="mapState-mapMutation-mapAction"><a href="#mapState-mapMutation-mapAction" class="headerlink" title="mapState()/mapMutation()/mapAction()"></a>mapState()/mapMutation()/mapAction()</h2><p>通过这些映射方法可以让大家少敲几个字，而起避免对store的直接访问</p>
+<p>state相关修改,<code>Login.vue</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState(<span class="string">'user'</span>, [<span class="string">'isLogin'</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>action相关修改</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    login()&#123;</span><br><span class="line">        <span class="keyword">this</span>[<span class="string">'user/login'</span>](<span class="string">"admin"</span>).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    ...mapActions([<span class="string">'user/login'</span>,<span class="string">'user/logout'</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h2><p>可以使用getters从store的state中派生出一些状态</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespaced: <span class="literal">true</span>,</span><br><span class="line">    state:&#123;</span><br><span class="line">        isLogin:<span class="literal">false</span>,</span><br><span class="line">        username:<span class="string">''</span><span class="comment">//用户名</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        login(state,username)&#123;</span><br><span class="line">            state.isLogin = <span class="literal">true</span></span><br><span class="line">            state.username = username</span><br><span class="line">        &#125;,</span><br><span class="line">        logout()&#123;</span><br><span class="line">            state.isLogin = <span class="literal">false</span></span><br><span class="line">            state.username = <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    getters:&#123;</span><br><span class="line">        welcome: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> state.username + <span class="string">',欢迎回来'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions:&#123;</span><br><span class="line">        login(&#123;commit&#125;,username)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(username===<span class="string">'admin'</span>)&#123;</span><br><span class="line">                        commit(<span class="string">'login'</span>,username)</span><br><span class="line">                        resolve()</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        reject()</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,<span class="number">1000</span>)</span><br><span class="line">                </span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在需要渲染的页面中</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">"isLogin"</span>&gt;</span></span><br><span class="line">    &#123;&#123;welcome&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>注销<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapState,mapGetters&#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    computed:&#123;</span><br><span class="line">        ...mapState(<span class="string">'user'</span>,[<span class="string">'isLogin'</span>])</span><br><span class="line">        ...mapGetters(<span class="string">'user'</span>,[<span class="string">'welcome'</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。开启严格模式<code>strict: true</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">    strict: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>Vuex的store接受plugins选项，这个选项暴露出每次mutation的钩子。Vuex插件就是一个函数，它接收 store 作为唯一参数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myPlugin = <span class="function"><span class="params">store</span> =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 当 store 初始化后调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在store文件夹下新建plugins文件夹并新建persist.js</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store =&gt;&#123;</span><br><span class="line">    <span class="comment">//store初始化的时候，将存储在localStoreage的状态还原</span></span><br><span class="line">    <span class="keyword">if</span>(localStoreage)&#123;</span><br><span class="line">        <span class="keyword">const</span> user = <span class="built_in">JSON</span>.parse(localStorage.getItem(<span class="string">'user'</span>))</span><br><span class="line">        <span class="keyword">if</span>(user)&#123;</span><br><span class="line">            store.commit(<span class="string">'login'</span>,user.username)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果用户相关状态发生变化，自动存入localStoreage</span></span><br><span class="line">    store.subscribe(<span class="function">(<span class="params">mutation,state</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//&#123;type:'user/login'&#125;</span></span><br><span class="line">        <span class="comment">//&#123;type:'user/logout'&#125;</span></span><br><span class="line">        <span class="comment">//&#123;type:'cart/addcart'&#125;</span></span><br><span class="line">        <span class="keyword">if</span>(mutation.type===<span class="string">'user/login'</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> user = <span class="built_in">JSON</span>.stringify(state.user)</span><br><span class="line">            localStoreage.setItem(<span class="string">'user'</span>,user)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mutation.type===<span class="string">'user/logout'</span>)&#123;</span><br><span class="line">            localStoreage.removeItem(<span class="string">'user'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注册插件：</p>
+<p>在store的index.js中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">import</span> persist <span class="keyword">from</span> <span class="string">'./plugins/persist'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    plugins: [persist]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>vue</category>
@@ -482,75 +524,33 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue统一状态管理——Vuex</title>
-    <url>/2020/06/Vue%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94Vuex/</url>
-    <content><![CDATA[<p>Vuex是一个专为Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状<br>态，并以相应的规则保证状态以可预测的方式发生变化。</p>
+    <title>在vue项目中动态加载js</title>
+    <url>/2020/06/%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDjs/</url>
+    <content><![CDATA[<p>通常情况下，如果网页加载的js文件较多并且文件较大的时候，一次性加载完毕的话，会非常的影响网页加载的速度，当然将会严重影响用户体验，最终会影响的站点的人气，所以我们要想办法解决这个问题。</p>
 <a id="more"></a>
 
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><code>vue add vuex</code></p>
-<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>将应用全局状态定义在state中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">state: &#123;</span><br><span class="line"> isLogin: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>修改State只能通过Mutation</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    login(state) &#123;</span><br><span class="line">        state.isLogin = <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    logout(state) &#123;</span><br><span class="line">        state.isLogin = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h2 id="获取和修改状态"><a href="#获取和修改状态" class="headerlink" title="获取和修改状态"></a>获取和修改状态</h2><p>使用store.state获取状态</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!$store.state.isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"logout"</span> <span class="attr">v-else</span>&gt;</span>登出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>修改状态只能通过store.dispatch(mutation)</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'login'</span>)</span><br><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'logout'</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 类似于 mutation，不同在于：</p>
+<p>很多时候，加载的js代码在当前页面功能中并不需要，所以如果能够根据需要动态的加载js文件，那么将会极大的提高网页的加载速度，下面就通过代码实例介绍一下如何动态加载js。</p>
+<p>vue中常用的引入js文件的方式一般有三种</p>
 <ul>
-<li>Action 提交的是 mutation，而不是直接变更状态。</li>
-<li>Action 可以包含任意异步操作。</li>
+<li><p>在html文件中<code>&lt;script src=&quot;&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code>引入</p>
+</li>
+<li><p>在<code>main.js</code>或需要引用的<code>.vue</code>文件中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'../a'</span><span class="comment">//要用到export导出之后 才能用import导入.</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../a'</span><span class="comment">//和直接引入script标签是一样的</span></span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//参数1是vuex传递的上下文context:&#123;commit,dispatch,state&#125;</span></span><br><span class="line">login(&#123;commit&#125;, username) &#123;</span><br><span class="line">    <span class="comment">//模拟登陆api调用，1s后如果登录名是admin则登陆成功</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (username === <span class="string">'admin'</span>) &#123;</span><br><span class="line">                commit(<span class="string">'login'</span>)</span><br><span class="line">                resolve()</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                reject()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假设我们有这样一个比较极限的应用场景：</p>
+<p>我们在登录页需要支持facebook，google，微信等十多个平台的第三方登录，并且每个第三方登录所需要的js文件特别大，用我们常规的用法去加载的话在用户第一次使用的时候就需要加载特别多的js文件，势必会造成用户体验不好的情况</p>
+<p>那么我们应该怎么去优化呢</p>
+<h1 id="vue-plugin-load-script"><a href="#vue-plugin-load-script" class="headerlink" title="vue-plugin-load-script"></a>vue-plugin-load-script</h1><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save vue-plugin-load-script</span><br></pre></td></tr></table></figure>
 
-<p>派发动作，触发actions</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'login'</span>, <span class="string">'admin'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.$router.push(<span class="keyword">this</span>.$route.query.redirect)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'用户名或密码错误'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// In main.js</span></span><br><span class="line"><span class="keyword">import</span> LoadScript <span class="keyword">from</span> <span class="string">'vue-plugin-load-script'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(LoadScript);</span><br></pre></td></tr></table></figure>
 
-<h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>使用modules定义多个子模块有利于组件复杂状态</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">'./user'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules:&#123;</span><br><span class="line">        user,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//login.vue</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    wxLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://wx登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    googleLogin()&#123;</span><br><span class="line">        <span class="keyword">this</span>.$loadScript(<span class="string">"https://谷歌登录需要的js"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Script is loaded, do something</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Failed to fetch script</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>移动先前登陆状态相关代码到store文件夹下新建的user.js中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespaced: <span class="literal">true</span>,<span class="comment">//避免命名冲突</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>访问方式相应变化</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Login.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!$store.state.user.isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'user/login'</span>, <span class="string">'admin'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> redirect = <span class="keyword">this</span>.$route.query.redirect || <span class="string">'/'</span></span><br><span class="line">    <span class="keyword">this</span>.$router.push(redirect)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'用户名或密码错误'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// router/index.js</span></span><br><span class="line">store.state.user.isLogin</span><br></pre></td></tr></table></figure>
-
-<h2 id="mapState-mapMutation-mapAction"><a href="#mapState-mapMutation-mapAction" class="headerlink" title="mapState()/mapMutation()/mapAction()"></a>mapState()/mapMutation()/mapAction()</h2><p>通过这些映射方法可以让大家少敲几个字，而起避免对store的直接访问</p>
-<p>state相关修改,<code>Login.vue</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"login"</span> <span class="attr">v-if</span>=<span class="string">"!isLogin"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState(<span class="string">'user'</span>, [<span class="string">'isLogin'</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>action相关修改</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">methods:&#123;</span><br><span class="line">    login()&#123;</span><br><span class="line">        <span class="keyword">this</span>[<span class="string">'user/login'</span>](<span class="string">"admin"</span>).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    ...mapActions([<span class="string">'user/login'</span>,<span class="string">'user/logout'</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h2><p>可以使用getters从store的state中派生出一些状态</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespaced: <span class="literal">true</span>,</span><br><span class="line">    state:&#123;</span><br><span class="line">        isLogin:<span class="literal">false</span>,</span><br><span class="line">        username:<span class="string">''</span><span class="comment">//用户名</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        login(state,username)&#123;</span><br><span class="line">            state.isLogin = <span class="literal">true</span></span><br><span class="line">            state.username = username</span><br><span class="line">        &#125;,</span><br><span class="line">        logout()&#123;</span><br><span class="line">            state.isLogin = <span class="literal">false</span></span><br><span class="line">            state.username = <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    getters:&#123;</span><br><span class="line">        welcome: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> state.username + <span class="string">',欢迎回来'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions:&#123;</span><br><span class="line">        login(&#123;commit&#125;,username)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(username===<span class="string">'admin'</span>)&#123;</span><br><span class="line">                        commit(<span class="string">'login'</span>,username)</span><br><span class="line">                        resolve()</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        reject()</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,<span class="number">1000</span>)</span><br><span class="line">                </span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在需要渲染的页面中</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">"isLogin"</span>&gt;</span></span><br><span class="line">    &#123;&#123;welcome&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>注销<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapState,mapGetters&#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    computed:&#123;</span><br><span class="line">        ...mapState(<span class="string">'user'</span>,[<span class="string">'isLogin'</span>])</span><br><span class="line">        ...mapGetters(<span class="string">'user'</span>,[<span class="string">'welcome'</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。开启严格模式<code>strict: true</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">    strict: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>Vuex的store接受plugins选项，这个选项暴露出每次mutation的钩子。Vuex插件就是一个函数，它接收 store 作为唯一参数：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myPlugin = <span class="function"><span class="params">store</span> =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 当 store 初始化后调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在store文件夹下新建plugins文件夹并新建persist.js</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store =&gt;&#123;</span><br><span class="line">    <span class="comment">//store初始化的时候，将存储在localStoreage的状态还原</span></span><br><span class="line">    <span class="keyword">if</span>(localStoreage)&#123;</span><br><span class="line">        <span class="keyword">const</span> user = <span class="built_in">JSON</span>.parse(localStorage.getItem(<span class="string">'user'</span>))</span><br><span class="line">        <span class="keyword">if</span>(user)&#123;</span><br><span class="line">            store.commit(<span class="string">'login'</span>,user.username)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果用户相关状态发生变化，自动存入localStoreage</span></span><br><span class="line">    store.subscribe(<span class="function">(<span class="params">mutation,state</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//&#123;type:'user/login'&#125;</span></span><br><span class="line">        <span class="comment">//&#123;type:'user/logout'&#125;</span></span><br><span class="line">        <span class="comment">//&#123;type:'cart/addcart'&#125;</span></span><br><span class="line">        <span class="keyword">if</span>(mutation.type===<span class="string">'user/login'</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> user = <span class="built_in">JSON</span>.stringify(state.user)</span><br><span class="line">            localStoreage.setItem(<span class="string">'user'</span>,user)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mutation.type===<span class="string">'user/logout'</span>)&#123;</span><br><span class="line">            localStoreage.removeItem(<span class="string">'user'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注册插件：</p>
-<p>在store的index.js中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">import</span> persist <span class="keyword">from</span> <span class="string">'./plugins/persist'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    plugins: [persist]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
+<p>这样用户点击什么登录方式就会去加载对应的第三方登录需要的js，从而避免了加载过多不需要的js造成页面性能浪费</p>
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>vue</category>
@@ -1331,6 +1331,22 @@
       </tags>
   </entry>
   <entry>
+    <title>flutter中验证码倒计时</title>
+    <url>/2020/08/flutter%E4%B8%AD%E9%AA%8C%E8%AF%81%E7%A0%81%E5%80%92%E8%AE%A1%E6%97%B6/</url>
+    <content><![CDATA[<p>flutter中更换手机号，验证码倒计时的一种写法。</p>
+<a id="more"></a>
+
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'dart:async'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'dart:convert'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/cupertino.dart'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:zzc_app/utils/dio/dio.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PhoneNumber</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> userinfo;</span><br><span class="line">  PhoneNumber(<span class="keyword">this</span>.userinfo, &#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _PhoneNumberState createState() =&gt; _PhoneNumberState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_PhoneNumberState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">PhoneNumber</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> _codeController = TextEditingController();</span><br><span class="line"></span><br><span class="line">  Timer _countdownTimer;</span><br><span class="line">  <span class="built_in">String</span> _codeCountdownStr = <span class="string">'获取验证码'</span>;</span><br><span class="line">  <span class="built_in">int</span> _countdownNum = <span class="number">59</span>;</span><br><span class="line"></span><br><span class="line">  _getcode() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="comment">//获取验证码</span></span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">await</span> Net().<span class="keyword">get</span>(<span class="string">'verification-code'</span>, &#123;</span><br><span class="line">      <span class="string">'phone_number'</span>: widget.userinfo[<span class="string">'phone_number'</span>],</span><br><span class="line">      <span class="string">'type'</span>: <span class="string">"change_phone"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    reGetCountdown();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> reGetCountdown() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (_countdownTimer != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// Timer的第一秒倒计时是有一点延迟的，为了立刻显示效果可以添加下一行</span></span><br><span class="line">      _codeCountdownStr = <span class="string">'<span class="subst">$&#123;_countdownNum--&#125;</span>(s)'</span>;</span><br><span class="line">      _countdownTimer = <span class="keyword">new</span> Timer.periodic(<span class="keyword">new</span> <span class="built_in">Duration</span>(seconds: <span class="number">1</span>), (timer) &#123;</span><br><span class="line">        setState(() &#123;</span><br><span class="line">          <span class="keyword">if</span> (_countdownNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            _codeCountdownStr = <span class="string">'<span class="subst">$&#123;_countdownNum--&#125;</span>(s)'</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            _codeCountdownStr = <span class="string">'获取验证码'</span>;</span><br><span class="line">            _countdownNum = <span class="number">59</span>;</span><br><span class="line">            _countdownTimer.cancel();</span><br><span class="line">            _countdownTimer = <span class="keyword">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要忘记在这里释放掉Timer</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    _countdownTimer?.cancel();</span><br><span class="line">    _countdownTimer = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'绑定手机号'</span>)),</span><br><span class="line">      body: Container(</span><br><span class="line">        padding: EdgeInsets.only(left: <span class="number">10</span>, right: <span class="number">10</span>, top: <span class="number">10</span>),</span><br><span class="line">        child: ListView(</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            ListTile(</span><br><span class="line">              leading: Text(<span class="string">'当前手机号'</span>),</span><br><span class="line">              title: Text(widget.userinfo[<span class="string">'phone_number'</span>]),</span><br><span class="line">            ),</span><br><span class="line">            Divider(),</span><br><span class="line">            ListTile(</span><br><span class="line">              title: TextField(</span><br><span class="line">                controller: _codeController,</span><br><span class="line">                decoration: InputDecoration(hintText: <span class="string">'请输入验证码'</span>),</span><br><span class="line">              ),</span><br><span class="line">              trailing: RaisedButton(</span><br><span class="line">                onPressed: _countdownNum &gt;= <span class="number">59</span> ? _getcode : <span class="keyword">null</span>,</span><br><span class="line">                child: Text(_codeCountdownStr),</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<!-- markdownlint-disable MD041 MD002--> ]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>flutter中区分开发环境与正式环境</title>
     <url>/2020/08/flutter%E4%B8%AD%E5%8C%BA%E5%88%86%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E6%AD%A3%E5%BC%8F%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<p>本文讲述如何在flutter中区分开开发环境以及正式环境中接口地址等相关信息。</p>
@@ -1360,22 +1376,6 @@
 <blockquote>
 <p>我们将为不同的环境生成对应的APK。 要在iOS上构建版本，只需将apk替换为ios。</p>
 </blockquote>
-<!-- markdownlint-disable MD041 MD002--> ]]></content>
-      <categories>
-        <category>flutter</category>
-      </categories>
-      <tags>
-        <tag>flutter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>flutter中验证码倒计时</title>
-    <url>/2020/08/flutter%E4%B8%AD%E9%AA%8C%E8%AF%81%E7%A0%81%E5%80%92%E8%AE%A1%E6%97%B6/</url>
-    <content><![CDATA[<p>flutter中更换手机号，验证码倒计时的一种写法。</p>
-<a id="more"></a>
-
-<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'dart:async'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'dart:convert'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/cupertino.dart'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:zzc_app/utils/dio/dio.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PhoneNumber</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> userinfo;</span><br><span class="line">  PhoneNumber(<span class="keyword">this</span>.userinfo, &#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _PhoneNumberState createState() =&gt; _PhoneNumberState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_PhoneNumberState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">PhoneNumber</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> _codeController = TextEditingController();</span><br><span class="line"></span><br><span class="line">  Timer _countdownTimer;</span><br><span class="line">  <span class="built_in">String</span> _codeCountdownStr = <span class="string">'获取验证码'</span>;</span><br><span class="line">  <span class="built_in">int</span> _countdownNum = <span class="number">59</span>;</span><br><span class="line"></span><br><span class="line">  _getcode() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="comment">//获取验证码</span></span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">await</span> Net().<span class="keyword">get</span>(<span class="string">'verification-code'</span>, &#123;</span><br><span class="line">      <span class="string">'phone_number'</span>: widget.userinfo[<span class="string">'phone_number'</span>],</span><br><span class="line">      <span class="string">'type'</span>: <span class="string">"change_phone"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    reGetCountdown();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> reGetCountdown() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (_countdownTimer != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// Timer的第一秒倒计时是有一点延迟的，为了立刻显示效果可以添加下一行</span></span><br><span class="line">      _codeCountdownStr = <span class="string">'<span class="subst">$&#123;_countdownNum--&#125;</span>(s)'</span>;</span><br><span class="line">      _countdownTimer = <span class="keyword">new</span> Timer.periodic(<span class="keyword">new</span> <span class="built_in">Duration</span>(seconds: <span class="number">1</span>), (timer) &#123;</span><br><span class="line">        setState(() &#123;</span><br><span class="line">          <span class="keyword">if</span> (_countdownNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            _codeCountdownStr = <span class="string">'<span class="subst">$&#123;_countdownNum--&#125;</span>(s)'</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            _codeCountdownStr = <span class="string">'获取验证码'</span>;</span><br><span class="line">            _countdownNum = <span class="number">59</span>;</span><br><span class="line">            _countdownTimer.cancel();</span><br><span class="line">            _countdownTimer = <span class="keyword">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要忘记在这里释放掉Timer</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    _countdownTimer?.cancel();</span><br><span class="line">    _countdownTimer = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'绑定手机号'</span>)),</span><br><span class="line">      body: Container(</span><br><span class="line">        padding: EdgeInsets.only(left: <span class="number">10</span>, right: <span class="number">10</span>, top: <span class="number">10</span>),</span><br><span class="line">        child: ListView(</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            ListTile(</span><br><span class="line">              leading: Text(<span class="string">'当前手机号'</span>),</span><br><span class="line">              title: Text(widget.userinfo[<span class="string">'phone_number'</span>]),</span><br><span class="line">            ),</span><br><span class="line">            Divider(),</span><br><span class="line">            ListTile(</span><br><span class="line">              title: TextField(</span><br><span class="line">                controller: _codeController,</span><br><span class="line">                decoration: InputDecoration(hintText: <span class="string">'请输入验证码'</span>),</span><br><span class="line">              ),</span><br><span class="line">              trailing: RaisedButton(</span><br><span class="line">                onPressed: _countdownNum &gt;= <span class="number">59</span> ? _getcode : <span class="keyword">null</span>,</span><br><span class="line">                child: Text(_codeCountdownStr),</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <!-- markdownlint-disable MD041 MD002--> ]]></content>
       <categories>
         <category>flutter</category>
