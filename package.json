@@ -6,20 +6,29 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "push": "hexo cl && hexo g && hexo d && php -f push_sitemap_to_baidu.php"
   },
   "hexo": {
-    "version": ""
+    "version": "4.2.1"
   },
   "dependencies": {
     "hexo": "^4.2.1",
+    "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^1.0.0",
+    "hexo-generator-searchdb": "^1.3.1",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
-    "hexo-renderer-stylus": "^1.1.0",
     "hexo-renderer-marked": "^2.0.0",
-    "hexo-server": "^1.0.0"
+    "hexo-renderer-pug": "^1.0.0",
+    "hexo-renderer-stylus": "^1.1.0",
+    "hexo-server": "^1.0.0",
+    "hexo-tag-dplayer": "^0.3.3",
+    "social-share.js": "^1.0.16"
+  },
+  "devDependencies": {
+    "hexo-generator-baidu-sitemap": "^0.1.6"
   }
 }
