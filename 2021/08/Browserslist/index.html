@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Browserslist"><meta name="keywords" content="webpack"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>Browserslist | Joker's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常⻅集合范围说明"><span class="toc-number">2.</span> <span class="toc-text">常⻅集合范围说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见浏览器名称"><span class="toc-number">3.</span> <span class="toc-text">常见浏览器名称</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/qytayh" target="_blank" rel="noopener">follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">43</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">20</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">22</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/resume">Resume</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Browserslist</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-08-17</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/webpack/">webpack</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><code>browserslist</code>实际上就是声明了⼀段浏览器的集合，我们的⼯具可以根据这段集合描述，针对性的输出兼容性代码。</p>
+<a id="more"></a>
+
+<p><a href="https://github.com/browserslist/browserslist" target="_blank" rel="noopener">Browserslist</a>就是帮助我们来设置⽬标浏览器的⼯具。<code>Browserslist</code> 被⼴泛的应⽤到 <code>Babel</code>、<code>postcsspreset-env</code>、<code>autoprefixer</code> 等开发⼯具上。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p><code>Browserslist</code>的配置可以放在<code>package.json</code>中，也可以单独放在配置⽂件<code>.browserslistrc</code>中。所有的⼯具都会主动查找<code>browserslist</code>的配置⽂件，根据 <code>browserslist</code>配置找出对应的⽬标浏览器集合。</p>
+<p>Browserslist 的数据都是来⾃Can I Use:<a href="https://browserl.ist/" target="_blank" rel="noopener">https://browserl.ist/</a></p>
+<p>可惜⽹站关闭了，现在需要⼿动检测：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx browserslist "last 1 version, &gt;1%"</span><br></pre></td></tr></table></figure>
+
+<p>在<code>package.json</code>中的配置是增加⼀个<code>browserslist</code>数组属性：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"browserslist"</span>: [<span class="string">"last 2 version"</span>, <span class="string">"&gt; 1%"</span>, <span class="string">"maintained node versions"</span>, <span class="string">"not</span></span><br><span class="line"><span class="string">ie &lt; 11"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者在项⽬的根⽬录下创建⼀个<code>.browserslistrc</code>⽂件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 注释是这样写的，以#号开头</span><br><span class="line"># 每⾏⼀个浏览器集合描述</span><br><span class="line">last 2 version</span><br><span class="line">&gt; 1%</span><br><span class="line">maintained node versions</span><br><span class="line">not ie &lt; 11</span><br></pre></td></tr></table></figure>
+
+<h1 id="常⻅集合范围说明"><a href="#常⻅集合范围说明" class="headerlink" title="常⻅集合范围说明"></a>常⻅集合范围说明</h1><table>
+<thead>
+<tr>
+<th>范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>last 2 versions</td>
+<td>caniuse.com⽹站跟踪的最新两个版本，假如 iOS 12 是最新版本，那么向后兼容两个版本就是 iOS 11 和 iOS 12</td>
+</tr>
+<tr>
+<td>&gt; 1%</td>
+<td>全球超过 1%⼈使⽤的浏览器，类似&gt; 5% in US 则指代美国 5%以上⽤户</td>
+</tr>
+<tr>
+<td>cover 99.5%</td>
+<td>覆盖 99.5%主流浏览器</td>
+</tr>
+<tr>
+<td>chrome &gt; 50   ie 6-8</td>
+<td>指定某个浏览器版本范围</td>
+</tr>
+<tr>
+<td>unreleased versions</td>
+<td>所有浏览器的 beta 版本</td>
+</tr>
+<tr>
+<td>not ie &lt; 11</td>
+<td>排除 ie11 以下版本不兼容</td>
+</tr>
+<tr>
+<td>since 2013  last 2 years</td>
+<td>某时间范围发布的所有浏览器版本</td>
+</tr>
+<tr>
+<td>maintained node versions</td>
+<td>所有被 node 基⾦会维护的 node 版本</td>
+</tr>
+<tr>
+<td>current node</td>
+<td>当前环境的 node 版本</td>
+</tr>
+<tr>
+<td>dead</td>
+<td>通过last 2 versions 筛选的浏览器中，全球使⽤率低于0.5% 且官⽅声明不再维护或者事实上已经两年没有再更新的版本</td>
+</tr>
+<tr>
+<td>defaults</td>
+<td>默认配置， &gt; 0.5% last 2 versions Firefox ESR not dead</td>
+</tr>
+</tbody></table>
+<h1 id="常见浏览器名称"><a href="#常见浏览器名称" class="headerlink" title="常见浏览器名称"></a>常见浏览器名称</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>中文对照</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android</td>
+<td>安卓 webview 浏览器</td>
+</tr>
+<tr>
+<td>Baidu</td>
+<td>百度浏览器</td>
+</tr>
+<tr>
+<td>BlackBerry / bb</td>
+<td>⿊莓浏览器</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>chrome 浏览器</td>
+</tr>
+<tr>
+<td>ChromeAndroid / and_chr</td>
+<td>chrome 安卓移动浏览器</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>微软 Edge 浏览器</td>
+</tr>
+<tr>
+<td>Electron</td>
+<td>Electron</td>
+</tr>
+<tr>
+<td>Explorer / ie</td>
+<td>ie 浏览器</td>
+</tr>
+<tr>
+<td>ExplorerMobile / ie_mob</td>
+<td>ie 移动浏览器</td>
+</tr>
+<tr>
+<td>Firefox / ff</td>
+<td>⽕狐浏览器</td>
+</tr>
+<tr>
+<td>FirefoxAndroid / and_ff</td>
+<td>⽕狐安卓浏览器</td>
+</tr>
+<tr>
+<td>iOS / ios_saf</td>
+<td>iOS Safari 浏览器</td>
+</tr>
+<tr>
+<td>Node</td>
+<td>nodejs</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Opera浏览器</td>
+</tr>
+<tr>
+<td>OperaMini / op_mini</td>
+<td>operaMini 浏览器</td>
+</tr>
+<tr>
+<td>OperaMobile / op_mob</td>
+<td>opera 移动浏览器</td>
+</tr>
+<tr>
+<td>QQAndroid / and_qq</td>
+<td>QQ安卓浏览器</td>
+</tr>
+<tr>
+<td>Samsung</td>
+<td>三星浏览器</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>桌⾯版本 Safari</td>
+</tr>
+<tr>
+<td>UCAndroid / and_uc</td>
+<td>UC 安卓浏览器</td>
+</tr>
+</tbody></table>
+<!-- markdownlint-disable MD041 MD002--> </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qytayh.github.io/2021/08/Browserslist/">https://qytayh.github.io/2021/08/Browserslist/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qytayh.github.io">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/webpack/">webpack</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/08/webpack%E8%BF%9B%E8%A1%8C%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><span>webpack进行前端开发工程环境搭建</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 - 2021 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
