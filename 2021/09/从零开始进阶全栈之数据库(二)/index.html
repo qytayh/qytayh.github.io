@@ -7,7 +7,7 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   }
-} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本使用"><span class="toc-number">3.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本增删改查"><span class="toc-number">4.</span> <span class="toc-text">基本增删改查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些踩过的坑"><span class="toc-number">5.</span> <span class="toc-text">一些踩过的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在查询结果中添加自定义属性"><span class="toc-number">5.1.</span> <span class="toc-text">在查询结果中添加自定义属性</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/qytayh" target="_blank" rel="noopener">follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">50</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">24</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">26</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/resume">Resume</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">从零开始进阶全栈之数据库(二)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-09-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>本篇主要介绍nodejs中的orm框架 —&gt; Sequelize</p>
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#orm和sql的对照关系"><span class="toc-number">3.</span> <span class="toc-text">orm和sql的对照关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据类型"><span class="toc-number">4.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前期准备"><span class="toc-number">5.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本增删改查"><span class="toc-number">6.</span> <span class="toc-text">基本增删改查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进阶用法"><span class="toc-number">7.</span> <span class="toc-text">进阶用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查询特定属性"><span class="toc-number">7.1.</span> <span class="toc-text">查询特定属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排除某些属性"><span class="toc-number">7.2.</span> <span class="toc-text">排除某些属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页查询"><span class="toc-number">7.3.</span> <span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询-不存在就新建一个"><span class="toc-number">7.4.</span> <span class="toc-text">查询,不存在就新建一个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量新增"><span class="toc-number">7.5.</span> <span class="toc-text">批量新增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-number">7.6.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实用方法"><span class="toc-number">7.7.</span> <span class="toc-text">实用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关联查询"><span class="toc-number">8.</span> <span class="toc-text">关联查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一对一"><span class="toc-number">8.1.</span> <span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一对多"><span class="toc-number">8.2.</span> <span class="toc-text">一对多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多对多"><span class="toc-number">8.3.</span> <span class="toc-text">多对多</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些踩过的坑"><span class="toc-number">9.</span> <span class="toc-text">一些踩过的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在查询结果中添加自定义属性"><span class="toc-number">9.1.</span> <span class="toc-text">在查询结果中添加自定义属性</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/qytayh" target="_blank" rel="noopener">follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">50</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">24</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">26</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/resume">Resume</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">从零开始进阶全栈之数据库(二)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-09-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>本篇主要介绍nodejs中的orm框架 —&gt; Sequelize</p>
 <a id="more"></a>
 
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>基于Promise的ORM(Object Relation Mapping)，是一种数据库中间件支持多种数据库、事务、关联等</p>
@@ -16,28 +16,141 @@
 </blockquote>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i sequelize mysql2 -S</span><br></pre></td></tr></table></figure>
 
-<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><ol>
-<li>建立连接</li>
-</ol>
+<h1 id="orm和sql的对照关系"><a href="#orm和sql的对照关系" class="headerlink" title="orm和sql的对照关系"></a>orm和sql的对照关系</h1><table>
+<thead>
+<tr>
+<th>sql</th>
+<th>orm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>select</td>
+<td>findAll(<code>查询多条</code>),findOne(<code>获取第一个条目</code>),findByPk(<code>findById不支持了</code>),findOrCreate(<code>查询,不存在就新建一个</code>),findAndCountAll(<code>分页查询/查询多条并统计数量</code>)</td>
+</tr>
+<tr>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>create</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>destroy</td>
+</tr>
+</tbody></table>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<thead>
+<tr>
+<th>orm</th>
+<th>sql</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sequelize.STRING</td>
+<td>VARCHAR(255)</td>
+</tr>
+<tr>
+<td>Sequelize.STRING(1234)</td>
+<td>VARCHAR(1234)</td>
+</tr>
+<tr>
+<td>Sequelize.TEXT</td>
+<td>TEXT</td>
+</tr>
+<tr>
+<td>Sequelize.TEXT(‘tiny’)</td>
+<td>TINYTEXT</td>
+</tr>
+<tr>
+<td>Sequelize.CITEXT</td>
+<td>CITEXT  仅 PostgreSQL 和 SQLite.</td>
+</tr>
+<tr>
+<td>Sequelize.TSVECTOR</td>
+<td>TSVECTOR  仅 PostgreSQL.</td>
+</tr>
+<tr>
+<td>Sequelize.BOOLEAN</td>
+<td>TINYINT(1)</td>
+</tr>
+<tr>
+<td>Sequelize.INTEGER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>Sequelize.BIGINT</td>
+<td>BIGINT</td>
+</tr>
+<tr>
+<td>Sequelize.BIGINT(11)</td>
+<td>BIGINT(11)</td>
+</tr>
+<tr>
+<td>Sequelize.FLOAT</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>Sequelize.FLOAT(11)</td>
+<td>FLOAT(11)</td>
+</tr>
+<tr>
+<td>Sequelize.FLOAT(11, 10)</td>
+<td>FLOAT(11,10)</td>
+</tr>
+<tr>
+<td>Sequelize.REAL</td>
+<td>REAL  仅 PostgreSQL.</td>
+</tr>
+<tr>
+<td>Sequelize.REAL(11)</td>
+<td>REAL(11)  仅 PostgreSQL.</td>
+</tr>
+<tr>
+<td>Sequelize.REAL(11, 12)</td>
+<td>REAL(11,12) 仅 PostgreSQL.</td>
+</tr>
+<tr>
+<td>Sequelize.DOUBLE</td>
+<td>DOUBLE</td>
+</tr>
+<tr>
+<td>Sequelize.DOUBLE(11)</td>
+<td>DOUBLE(11)</td>
+</tr>
+<tr>
+<td>Sequelize.DOUBLE(11, 10)</td>
+<td>DOUBLE(11,10)</td>
+</tr>
+<tr>
+<td>Sequelize.DATE</td>
+<td>DATETIME 适用于 mysql / sqlite, 带时区的TIMESTAMP 适用于 postgres</td>
+</tr>
+<tr>
+<td>Sequelize.DATE(6)</td>
+<td>DATETIME(6) 适用于 mysql 5.6.4+. 支持6位精度的小数秒</td>
+</tr>
+<tr>
+<td>Sequelize.DATEONLY</td>
+<td>不带时间的 DATE</td>
+</tr>
+</tbody></table>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
+<li><p>建立连接</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Sequelize = <span class="built_in">require</span>(<span class="string">'sequelize'</span>)</span><br><span class="line"><span class="keyword">const</span> sequelize = <span class="keyword">new</span> Sequelize(db.database, db.user, db.password, &#123; <span class="comment">//表名 用户名 密码</span></span><br><span class="line">    host: db.host, <span class="comment">//地址</span></span><br><span class="line">    port: db.port, <span class="comment">//端口</span></span><br><span class="line">    dialect: <span class="string">'mysql'</span>, <span class="comment">//数据库类型：'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql'</span></span><br><span class="line">    pool: &#123; <span class="comment">// 连接池配置</span></span><br><span class="line">        max: <span class="number">5</span>,</span><br><span class="line">        min: <span class="number">0</span>,</span><br><span class="line">        acquire: <span class="number">30000</span>,</span><br><span class="line">        idle: <span class="number">10000</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    timezone: <span class="string">'+08:00'</span> <span class="comment">//时区转换</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>定义模型</li>
-</ol>
+</li>
+<li><p>定义模型</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = sequelize.define(<span class="string">'user'</span>,&#123;</span><br><span class="line">    id: &#123;</span><br><span class="line">        type: Sequelize.STRING(<span class="number">255</span>),</span><br><span class="line">        primaryKey: <span class="literal">true</span>, <span class="comment">//主键</span></span><br><span class="line">        autoIncrement: <span class="literal">true</span>,  <span class="comment">// 自增长</span></span><br><span class="line">        allowNull:<span class="literal">false</span>  </span><br><span class="line">    &#125;,</span><br><span class="line">    name: &#123;</span><br><span class="line">        type: Sequelize.STRING,</span><br><span class="line">        defaultValue: <span class="string">'name1'</span>, <span class="comment">//设置默认值</span></span><br><span class="line">        comment: <span class="string">"姓名"</span>  <span class="comment">//注释</span></span><br><span class="line">    &#125;</span><br><span class="line">    role: Sequelize.INTEGER(<span class="number">11</span>),</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>同步数据库</li>
-</ol>
+</li>
+<li><p>同步数据库</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 严重：force := true 会强制删除表及数据后重建,请一定慎用！！！</span></span><br><span class="line">User.sync(&#123; <span class="attr">force</span>: <span class="literal">false</span> &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 强制同步：创建表之前先删除已存在的表</span></span><br><span class="line">User.sync(&#123; <span class="attr">force</span>: <span class="literal">true</span> &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>避免自动生成时间戳字段</li>
-</ol>
+</li>
+<li><p>避免自动生成时间戳字段</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = sequelize.define(<span class="string">'user'</span>,&#123;&#125;,&#123;</span><br><span class="line">    timestamps:<span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>指定表名</li>
+</li>
+<li><p>指定表名</p>
+</li>
 </ol>
 <ul>
 <li>freezeTableName:true  </li>
@@ -47,40 +160,72 @@
 <p>前者以modelName作为表名，后者则按其值作为表名<br>蛇形命名 underscored:true<br>默认驼峰 命名</p>
 </blockquote>
 <h1 id="基本增删改查"><a href="#基本增删改查" class="headerlink" title="基本增删改查"></a>基本增删改查</h1><ol>
-<li>增</li>
-</ol>
+<li><p>增</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res = User.create(&#123;</span><br><span class="line">    name:<span class="string">"joker"</span>,</span><br><span class="line">    role:<span class="number">1</span></span><br><span class="line">&#125;)</span><br><span class="line">consoole.log(<span class="string">'create'</span>,res)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>改</li>
-</ol>
+</li>
+<li><p>改</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res = User.update(</span><br><span class="line">    &#123;<span class="attr">role</span>:<span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">where</span>:&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;&#125;</span><br><span class="line">)</span><br><span class="line">consoole.log(<span class="string">'update'</span>,res)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>查</li>
-</ol>
+</li>
+<li><p>查</p>
 <ul>
-<li><p>单条</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123; </span><br><span class="line">attributes: [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'role'</span>], <span class="comment">// 指定需要返回的字段</span></span><br><span class="line">where: &#123;</span><br><span class="line">    id: id</span><br><span class="line">&#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多条</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> Op = Sequelize.Op</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = User.findAll(</span><br><span class="line">    &#123;<span class="attr">where</span>:&#123;<span class="attr">role</span>:&#123;[Op.lt]:<span class="number">3</span>,[Op.gt]:<span class="number">1</span>&#125;&#125;&#125;</span><br><span class="line">)</span><br><span class="line">consoole.log(<span class="string">'findAll'</span>,res)</span><br></pre></td></tr></table></figure>
-</li>
+<li>单条<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123; </span><br><span class="line">attributes: [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'role'</span>], <span class="comment">// 指定需要返回的字段</span></span><br><span class="line">where: &#123;</span><br><span class="line">    id: id</span><br><span class="line">&#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>多条<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Op = Sequelize.Op</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = User.findAll(</span><br><span class="line">    &#123;<span class="attr">where</span>:&#123;<span class="attr">role</span>:&#123;[Op.lt]:<span class="number">3</span>,[Op.gt]:<span class="number">1</span>&#125;&#125;&#125;</span><br><span class="line">)</span><br><span class="line">consoole.log(<span class="string">'findAll'</span>,res)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<ol start="4">
-<li>删</li>
-</ol>
-<ul>
-<li><p>方式1</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.destroy(&#123;</span><br><span class="line">    where: &#123;</span><br><span class="line">        id: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>方式2</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123;</span><br><span class="line">    where: &#123;</span><br><span class="line">        id: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">   result.destroy()</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+<li><p>删</p>
+<ul>
+<li>方式1<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.destroy(&#123;</span><br><span class="line">    where: &#123;</span><br><span class="line">        id: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>方式2<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123;</span><br><span class="line">    where: &#123;</span><br><span class="line">        id: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">result.destroy()</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
 </li>
 </ul>
+</li>
+</ol>
+<h1 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h1><h2 id="查询特定属性"><a href="#查询特定属性" class="headerlink" title="查询特定属性"></a>查询特定属性</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model.findAll(&#123;</span><br><span class="line">  attributes: [<span class="string">'foo'</span>, <span class="string">'bar'</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以使用嵌套数组来<strong>重命名</strong>属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model.findAll(&#123;</span><br><span class="line">  attributes: [<span class="string">'foo'</span>, [<span class="string">'bar'</span>, <span class="string">'baz'</span>], <span class="string">'qux'</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>添加聚合</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取帽子数量</span></span><br><span class="line">Model.findAll(&#123;</span><br><span class="line">  attributes: &#123;</span><br><span class="line">    include: [</span><br><span class="line">      [sequelize.fn(<span class="string">'COUNT'</span>, sequelize.col(<span class="string">'hats'</span>)), <span class="string">'n_hats'</span>]</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="排除某些属性"><a href="#排除某些属性" class="headerlink" title="排除某些属性"></a>排除某些属性</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model.findAll(&#123;</span><br><span class="line">  attributes: &#123; <span class="attr">exclude</span>: [<span class="string">'baz'</span>] &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Model.findAndCountAll(&#123;</span><br><span class="line">    limit:<span class="number">10</span>,<span class="comment">//每页10条</span></span><br><span class="line">    offset:x*<span class="number">10</span>,<span class="comment">//第x页*每页个数</span></span><br><span class="line">    where:&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="查询-不存在就新建一个"><a href="#查询-不存在就新建一个" class="headerlink" title="查询,不存在就新建一个"></a>查询,不存在就新建一个</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Model.findOrCreate(&#123;</span><br><span class="line">    where: &#123;&#125;,</span><br><span class="line">    defaults: &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="批量新增"><a href="#批量新增" class="headerlink" title="批量新增"></a>批量新增</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [&#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'张三'</span>&#125;, &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'李四'</span>&#125;]</span><br><span class="line">Model.bulkCreate(data, &#123;</span><br><span class="line">    raw: <span class="literal">true</span>,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> res)</span><br></pre></td></tr></table></figure>
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><ul>
+<li>排序</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Model.findAll(&#123;</span><br><span class="line">    order:[</span><br><span class="line">        [<span class="string">'id'</span>,<span class="string">'DESC'</span>]</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>DESC表示降序,默认ASC升序<br><a href="https://www.sequelize.com.cn/core-concepts/model-querying-basics#%E6%8E%92%E5%BA%8F%E5%92%8C%E5%88%86%E7%BB%84" target="_blank" rel="noopener">更多用法</a></p>
+</blockquote>
+<h2 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h2><ul>
+<li><p>count</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="keyword">await</span> User.count(&#123;</span><br><span class="line">  where: &#123;</span><br><span class="line">    age: &#123;</span><br><span class="line">      [Op.gt]: <span class="number">25</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 统计年龄大于25的人数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>max, min</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> User.max(<span class="string">'age'</span>); <span class="comment">// 最大年龄</span></span><br><span class="line"><span class="keyword">await</span> User.min(<span class="string">'age'</span>); <span class="comment">// 最小年龄</span></span><br><span class="line"><span class="keyword">await</span> User.min(<span class="string">'age'</span>, &#123; <span class="attr">where</span>: &#123; <span class="attr">age</span>: &#123; [Op.gt]: <span class="number">5</span> &#125; &#125; &#125;); <span class="comment">// 大于五岁的最小年龄</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sum</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> User.sum(<span class="string">'age'</span>); <span class="comment">// 年龄总和</span></span><br><span class="line"><span class="keyword">await</span> User.sum(<span class="string">'age'</span>, &#123; <span class="attr">where</span>: &#123; <span class="attr">age</span>: &#123; [Op.gt]: <span class="number">5</span> &#125; &#125; &#125;); <span class="comment">// 大于五岁的年龄总和</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h1><h2 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ModelA.belongsTo(ModelB,&#123;</span><br><span class="line">    <span class="comment">// onDelete: 'RESTRICT',  // RESTRICT, CASCADE, NO ACTION, SET DEFAULT, SET NULL</span></span><br><span class="line">    <span class="comment">// onUpdate: 'RESTRICT', // RESTRICT, CASCADE, NO ACTION, SET DEFAULT, SET NULL</span></span><br><span class="line">    <span class="comment">// 一对一关联的默认值, ON DELETE 为 SET NULL 而 ON UPDATE 为 CASCADE</span></span><br><span class="line">    <span class="comment">// foreignKey: 'aId',</span></span><br><span class="line">    <span class="comment">// as:"mobelb"</span></span><br><span class="line">&#125;)</span><br><span class="line">ModelB.hasOne(ModelA,&#123;</span><br><span class="line">    <span class="comment">// foreignKey: 'aId',</span></span><br><span class="line">    <span class="comment">// as:"mobela"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">ModelA.findAll(&#123;</span><br><span class="line">    where:&#123;&#125;,</span><br><span class="line">    include:&#123;</span><br><span class="line">        model: ModelB,</span><br><span class="line">        <span class="keyword">as</span>: <span class="string">'mobelb'</span></span><br><span class="line">        where: &#123;&#125;，</span><br><span class="line">        required: <span class="literal">false</span> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">ModelA.findAll(&#123;</span><br><span class="line">    where:&#123;&#125;,</span><br><span class="line">    include: [</span><br><span class="line">        <span class="string">'mobelb'</span></span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ModelA.belongsTo(ModelB)</span><br><span class="line">ModelB.hasMany(ModelA)</span><br></pre></td></tr></table></figure>
+
+<h2 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ModelA.belongToMany(ModelB)</span><br><span class="line">ModelB.hasMany(ModelA)</span><br></pre></td></tr></table></figure>
+
+
+
+
 <h1 id="一些踩过的坑"><a href="#一些踩过的坑" class="headerlink" title="一些踩过的坑"></a>一些踩过的坑</h1><h2 id="在查询结果中添加自定义属性"><a href="#在查询结果中添加自定义属性" class="headerlink" title="在查询结果中添加自定义属性"></a>在查询结果中添加自定义属性</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rlt.rows[i] =rlt.rows[i].toJSON()  <span class="comment">// 先进行toJSON 操作  然后才能赋值</span></span><br><span class="line">rlt.rows[i].xxx = <span class="string">'xxx'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不这么做的表现，当然 返回给前端的数据中也没有此字段</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i]) <span class="comment">// 读取不到 midWayPortsArr </span></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i].xxx) <span class="comment">// 可以获取到</span></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i].hasOwnProperty(<span class="string">'xxx'</span>)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i]) <span class="comment">// 读取不到 midWayPortsArr </span></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i].midWayPortsArr) <span class="comment">// 可以获取到</span></span><br><span class="line"><span class="built_in">console</span>.log(rlt.rows[i].hasOwnProperty(<span class="string">'midWayPortsArr'</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <!-- markdownlint-disable MD041 MD002--> </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qytayh.github.io/2021/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%BF%9B%E9%98%B6%E5%85%A8%E6%A0%88%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%BA%8C)/">https://qytayh.github.io/2021/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%BF%9B%E9%98%B6%E5%85%A8%E6%A0%88%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%BA%8C)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qytayh.github.io">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%BF%9B%E9%98%B6%E5%85%A8%E6%A0%88%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%B8%80)/"><span>从零开始进阶全栈之数据库（一）</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 - 2021 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
