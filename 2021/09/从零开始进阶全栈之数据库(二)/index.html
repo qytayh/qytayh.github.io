@@ -159,6 +159,18 @@
 <blockquote>
 <p>前者以modelName作为表名，后者则按其值作为表名<br>蛇形命名 underscored:true<br>默认驼峰 命名</p>
 </blockquote>
+<ol start="6">
+<li>实例用法</li>
+</ol>
+<ul>
+<li>更新<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jane = <span class="keyword">await</span> User.create(&#123; <span class="attr">name</span>: <span class="string">"Jane"</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(jane.name); <span class="comment">// "Jane"</span></span><br><span class="line">jane.name = <span class="string">"Ada"</span>;</span><br><span class="line"><span class="comment">// 数据库中的名称仍然是 "Jane"</span></span><br><span class="line"><span class="keyword">await</span> jane.save();</span><br><span class="line"><span class="comment">// 现在该名称已在数据库中更新为 "Ada"！</span></span><br></pre></td></tr></table></figure></li>
+<li>删除<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jane = <span class="keyword">await</span> User.create(&#123; <span class="attr">name</span>: <span class="string">"Jane"</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(jane.name); <span class="comment">// "Jane"</span></span><br><span class="line"><span class="keyword">await</span> jane.destroy();</span><br><span class="line"><span class="comment">// 现在该条目已从数据库中删除</span></span><br></pre></td></tr></table></figure></li>
+<li>重载<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jane = <span class="keyword">await</span> User.create(&#123; <span class="attr">name</span>: <span class="string">"Jane"</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(jane.name); <span class="comment">// "Jane"</span></span><br><span class="line">jane.name = <span class="string">"Ada"</span>;</span><br><span class="line"><span class="comment">// 数据库中的名称依然是 "Jane"</span></span><br><span class="line"><span class="keyword">await</span> jane.reload();</span><br><span class="line"><span class="built_in">console</span>.log(jane.name); <span class="comment">// "Jane"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>reload 调用生成一个 SELECT 查询,以从数据库中获取最新数据.</p>
+</blockquote>
+</li>
+</ul>
 <h1 id="基本增删改查"><a href="#基本增删改查" class="headerlink" title="基本增删改查"></a>基本增删改查</h1><ol>
 <li><p>增</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res = User.create(&#123;</span><br><span class="line">    name:<span class="string">"joker"</span>,</span><br><span class="line">    role:<span class="number">1</span></span><br><span class="line">&#125;)</span><br><span class="line">consoole.log(<span class="string">'create'</span>,res)</span><br></pre></td></tr></table></figure>
