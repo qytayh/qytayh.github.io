@@ -2,10 +2,10 @@
 title: 在vue中对axios进行二次封装
 date: 2020-08-01 21:17:33
 tags:
-    - vue
+  - vue
 	- 网络请求
 categories:
-    - vue
+  - vue
 	- 网络请求
 description:
 ---

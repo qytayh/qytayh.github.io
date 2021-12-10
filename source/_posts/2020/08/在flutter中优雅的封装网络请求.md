@@ -2,10 +2,10 @@
 title: 在flutter中优雅的封装网络请求
 date: 2020-08-03 20:30:25
 tags:
-    - flutter
+  - flutter
 	- 网络请求
 categories:
-    - flutter
+  - flutter
 	- 网络请求
 description:
 ---

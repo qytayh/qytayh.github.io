@@ -101,7 +101,6 @@ deploy:
   type: git
   repository: 
     github: https://github.com/qytayh/qytayh.github.io.git
-    coding: https://e.coding.net/qytayh/qytayh/qytayh.git
   branch: master
 
 search:
