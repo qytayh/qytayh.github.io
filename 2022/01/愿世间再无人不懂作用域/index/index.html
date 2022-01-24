@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="2022/01/愿世间再无人不懂作用域/index"><meta name="keywords" content=""><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>2022/01/愿世间再无人不懂作用域/index | Joker's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域是啥"><span class="toc-number">1.</span> <span class="toc-text">作用域是啥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#词法作用域"><span class="toc-number">2.</span> <span class="toc-text">词法作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数作用域"><span class="toc-number">3.</span> <span class="toc-text">函数作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级作用域"><span class="toc-number">4.</span> <span class="toc-text">块级作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch"><span class="toc-number">4.1.</span> <span class="toc-text">try&#x2F;catch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#let"><span class="toc-number">4.2.</span> <span class="toc-text">let</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const"><span class="toc-number">4.3.</span> <span class="toc-text">const</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/qytayh" target="_blank" rel="noopener">follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">150</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">29</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">32</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/resume">Resume</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">2022/01/愿世间再无人不懂作用域/index</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-01-24</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="作用域是啥"><a href="#作用域是啥" class="headerlink" title="作用域是啥"></a>作用域是啥</h2><p>作用域几乎是最基本的功能了，可以用来存储变量，方便我们之后对这些变量进行访问或修改。</p>
+<a id="more"></a>
+
+
+
+<p><img src="1.gif" alt="675456E07FB54B9C2F705A5CF7A196CE.gif"></p>
+<p>我们举个简单的栗子🌰来方便理解：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nubility = <span class="string">'Hello Varlet!'</span></span><br></pre></td></tr></table></figure>
+
+<p>我们来解析一下浏览器拿到这串代码后做的事情</p>
+<ul>
+<li><p>编译器会查看作用域中是否已经存在一个<code>nubility</code>。如果有了，那么编译器会忽略<code>var</code>声明继续进行编译；否则将会要求作用域声明一个变量<code>nubility</code></p>
+</li>
+<li><p>接下来编译器会生成用来处理<code>nubility = &#39;Hello Varlet!&#39;</code>赋值操作的代码并交给引擎</p>
+</li>
+<li><p>引擎拿到代码后会先询问作用域中是否存在<code>nubility</code>这个变量。如果有，那么引擎就会用这个变量，否则则会继续上上一层作用域中继续查找该变量</p>
+</li>
+<li><p>如果作用域中找到了<code>nubility</code>这个变量，那么就会<code>&#39;Hello Varlet!&#39;</code>赋值给它，否则引擎将会抛出一个异常</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VM418:1 Uncaught ReferenceError: nubility is not defined</span><br></pre></td></tr></table></figure>
+
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>我们先介绍一下词法作用域这个命名的来历。</p>
+<p>编译器拿到我们编写的源代码后先将代码进行词法化，这个过程中会对源代码中的字符进行检查，如果是有状态的解析过程则会赋予单词语义。(也成为静态作用域)</p>
+<blockquote>
+<p>一句话总结：词法作用域就是定义在词法阶段的作用域。</p>
+</blockquote>
+<p>语义化就是，在我们编写代码时由我们的变量和块级作用域写在哪里决定的。</p>
+<p>举个🌰</p>
+<p><img src="2.png" alt="image.png"></p>
+<ul>
+<li><p>黄色的框包含全局并且只有一个标识符<code>a</code></p>
+</li>
+<li><p>蓝色的框为<code>a</code>创建的作用域，包含三个标识符<code>name</code>、<code>b</code>、<code>author</code></p>
+</li>
+<li><p>红色部分包含<code>b</code>创建的作用域，其中只有一个<code>score</code>标识符</p>
+</li>
+</ul>
+<p>从这边我们可以看出这些对应的框由其作用域块代码的边写决定的，向下层逐级包含。</p>
+<p>作用域的结构以及互相之间的位置关系可以给引擎提供用于查找标识符的位置信息。</p>
+<p>我们一起来解析一下上面的代码</p>
+<ul>
+<li><p>引擎在执行<code>console.log(author,name,score)</code>时会查找<code>author,name,score</code>这三个变量的引用</p>
+</li>
+<li><p>先在<code>b</code>的作用域中查找，引擎在这里无法找到<code>author,name</code>,所以会向上一级<code>a</code>的作用域中继续查找</p>
+</li>
+<li><p>在<code>a</code>的作用域中，引擎找到了<code>author</code>和<code>name</code>，就使用了这里的引用</p>
+</li>
+</ul>
+<blockquote>
+<p>总结一下：作用域查找会在找到第一个匹配的标识符时停止查找</p>
+</blockquote>
+<p>在多级嵌套的作用域中，可以定义同名标识符，作用域的查找从运行时所在的最内层向外查找，找到第一个匹配的标识符为止。</p>
+<p>⚠️⚠️⚠️⚠️⚠️⚠️</p>
+<p>其实这也不是绝对的</p>
+<p><img src="3.gif" alt="895625EE5560EB2873470B4A254502F9.gif"></p>
+<p>😳😳😳可恶啊居然还有？先摆个烂歇会~</p>
+<p><img src="4.gif" alt="C4D4506256984E0951AE70EF2D39C7AF.gif"></p>
+<p>ok，时间到😋摆烂结束。接下来我们聊聊欺骗词法</p>
+<p>js中有两种机制可以在运行时修改词法作用域，一个是<code>eval</code>另一个是<code>with</code>。社区中普遍认为这种机制会导致性能下降，因此我们不做过多介绍，本篇中仅以<code>eval</code>为例进行分析。</p>
+<p>先介绍一下<code>eval</code>的功能：可以接收一个字符串作为参数，并将其中的内容作为书写在程序该位置的代码。</p>
+<p>举个🌰：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">eval</span>(str)</span><br><span class="line">  <span class="built_in">console</span>.log(num)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">a(<span class="string">'var num = 2'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>eval</code>调用中的<code>var num = 2</code>，会被当做在<code>a</code>的作用域中来处理，对<code>a</code>的词法作用域进行了修改，从而遮蔽了外部的同名变量<code>num</code>，因此引擎在执行<code>console.log</code>时只会在<code>a</code>内部找到这个<code>num</code>.</p>
+<h2 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h2><p>函数作用域是指：属于这个函数的全部变量都可以在整个函数的的范围内使用以及复用(包括嵌套的子作用域)。</p>
+<p>在软件设计中，我们遵循最小暴露原则。也就是说我们可以使用内嵌作用域来对一些变量和函数进行私有化，从而避免污染全局。</p>
+<p>举个🌰</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  b = num + c(num)</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span>*num</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，变量<code>b</code>和函数<code>c</code>都应该是实现<code>a</code>具体操作的私有内容，放在全局的话可能会被有意或无意的被修改成非预期的方式，因此更合理的方式是将<code>b</code>和<code>c</code>隐藏咋函数<code>a</code>的内部.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*num</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  b = num + c(num)</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><p>块级作用域是用来最小暴露原则进行拓展的工具，将代码从在函数内隐藏信息拓展为在块内隐藏信息。</p>
+<p>举一个常见的例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">996</span>;i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>i</code>其实只在<code>for</code>的循环内部使用，但是却污染到了整个函数作用域中，我们如果使用块级作用域可以使其只能在<code>for</code>的循环内部使用，这对保证变量不会被混乱的复用，以及提升代码的可维护性有很大的益处。</p>
+<h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try/catch"></a>try/catch</h3><p><code>ES3</code>规范中<code>try/catch</code>的<code>catch</code>分句会创建一个块级作用域，其中声明的变量只在<code>catch</code>生效</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="literal">undefined</span>() <span class="comment">//随便执行一个能让他出错的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(e)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e) <span class="comment">//能正常执行</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(e) <span class="comment">//VM20919:8 Uncaught ReferenceError: e is not defined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>ES6中提供了<code>let</code>关键字，可以将变量绑定到任意的作用域,通常是定义改变量所在的<code>{...}</code>中。</p>
+<p>也就是说，<code>let</code>关键字可以为其声明的变量隐式创建块作用域。</p>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>除了<code>let</code>以外ES6还引入了<code>const</code>，同样可以用来创建块作用域变量，但其值时固定的。之后任何修改值的操作都会抛出错误。</p>
+<p><img src="5.png" alt="image.png"></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>以上就是本人对于作用域的一些见解，如有任何问题或建议，欢迎留言讨论！</p>
+<p>顺便推荐一下本人参与的开源项目 <a href="https://github.com/varletjs/varlet" target="_blank" rel="noopener">varlet</a> 欢迎大家star pr</p>
+<p><img src="6.jpg" alt="F1854D82AA4684E53C033B8186B17A42.jpg"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qytayh.github.io/2022/01/%E6%84%BF%E4%B8%96%E9%97%B4%E5%86%8D%E6%97%A0%E4%BA%BA%E4%B8%8D%E6%87%82%E4%BD%9C%E7%94%A8%E5%9F%9F/index/">https://qytayh.github.io/2022/01/%E6%84%BF%E4%B8%96%E9%97%B4%E5%86%8D%E6%97%A0%E4%BA%BA%E4%B8%8D%E6%87%82%E4%BD%9C%E7%94%A8%E5%9F%9F/index/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qytayh.github.io">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/01/%5B%E8%B7%AF%E9%A3%9E%5D%5BLeetCode%5D124_%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/index/"><i class="fa fa-chevron-left">  </i><span>2022/01/[路飞][LeetCode]124_二叉树中的最大路径和/index</span></a></div><div class="next-post pull-right"><a href="/2022/01/%E5%92%A6_%E4%BD%A0%E7%AB%9F%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84let!!!/index/"><span>2022/01/咦_你竟是这样的let!!!/index</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 - 2022 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
